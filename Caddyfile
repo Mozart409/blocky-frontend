@@ -1,0 +1,9 @@
+localhost:80 {
+    root * /app
+    file_server
+    encode zstd gzip
+}
+
+localhost:2016 {
+	respond "Goodbye, world!"
+}
