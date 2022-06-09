@@ -2,6 +2,8 @@ import { useBlockingStatus } from './utils/api'
 import { BlockingStatus } from './components/BlockingStatus'
 import { ErrorBoundary } from 'react-error-boundary'
 import { ErrorFallback } from './components/ErrorFallBack'
+import { RefreshList } from './components/RefreshList'
+import { DNSQuery } from './components/DNSQuery'
 function App() {
   return (
     <>
@@ -14,7 +16,8 @@ function App() {
         <BlockingStatus />
       </ErrorBoundary>
 
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+      <RefreshList />
+      <DNSQuery />
     </>
   )
 }
