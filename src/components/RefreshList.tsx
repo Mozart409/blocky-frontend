@@ -22,13 +22,13 @@ export const RefreshList: FC = () => {
 
   return (
     <>
-      <h2>useListRefresh</h2>
+      <h2>Refresh Block List</h2>
       <button
         type="button"
         onClick={() => {
           mutationRefresh.mutate()
         }}
-        className="flex p-2 rounded-md bg-indigo-500 hover:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-white"
+        className="flex p-2 rounded-md bg-sky-500 hover:bg-sky-400 focus:outline-none focus:ring-2 focus:ring-white"
       >
         <span className="text-white">Refresh Lists</span>
       </button>
