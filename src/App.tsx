@@ -1,13 +1,23 @@
-import { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import { BlockingStatus } from './components/BlockingStatus'
 
+import { RefreshList } from './components/RefreshList'
+import { DNSQuery } from './components/DNSQuery'
+import { Spacer } from './components/Spacer'
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+      <main>
+        <BlockingStatus />
+        <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
+          <div className="px-4 py-8 sm:px-0">
+            <div className="max-w-3xl mx-auto">
+              <RefreshList />
+              <Spacer />
+              <DNSQuery />
+            </div>
+          </div>
+        </div>
+      </main>
     </>
   )
 }

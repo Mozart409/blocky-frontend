@@ -23,4 +23,12 @@ dist-ssr
 *.sln
 *.sw?
 
-.env.local
+blocky
+dist
+.env*
+.env.example
+.gitignore
+docker-compose.yaml
+docker-compose.yml
+Dockerfile
+readme.md

@@ -1,0 +1,13 @@
+version: '3.7'
+services:
+  blocky:
+    image: ghcr.io/0xerr0r/blocky:v0.19
+    ports:
+      - '54:53/tcp'
+      - '54:53/udp'
+      - '4000:4000/tcp'
+    environment:
+      - TZ=Europe/Berlin # Optional to synchronize the log timestamp with host
+    volumes:
+      # config file
+      - ./blocky/config.yml:/app/config.yml

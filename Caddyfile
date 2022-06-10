@@ -1,0 +1,6 @@
+localhost:80 {
+    root * /app
+    file_server
+    encode zstd gzip
+}
+
