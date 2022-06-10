@@ -35,7 +35,7 @@ Start the development server
   pnpm run dev
 ```
 
-Production version
+Production version frontend runs on [http://localhost:81](http://localhost:81)
 
 ```bash
   docker compose up -d
