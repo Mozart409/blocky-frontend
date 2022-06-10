@@ -11,3 +11,10 @@ services:
     volumes:
       # config file
       - ./blocky/config.yml:/app/config.yml
+
+  blocky-frontend:
+    depends_on:
+      - blocky
+    image: ghcr.io/mozart409/blocky-frontend:main
+    ports:
+      - '81:80'
