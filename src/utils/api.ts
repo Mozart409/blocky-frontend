@@ -3,17 +3,17 @@ import axios from 'axios'
 import { useQuery } from 'react-query'
 
 const getFullUrl = (url: string) => {
-  let baseUrl
-  if (process.env.NODE_ENV === 'development') {
+  let baseUrl = 'http://localhost:4000/api'
+  /* if (process.env.NODE_ENV === 'development') {
     baseUrl = 'http://localhost:4000/api'
   }
 
   if (process.env.NODE_ENV === 'production') {
     baseUrl = process.env.API_URL + '/api'
-  }
+  } */
 
   const fullURL = `${baseUrl}${url}`
-  console.log(fullURL)
+  /* console.log(fullURL) */
   return fullURL
 }
 
