@@ -4,6 +4,3 @@ localhost:80 {
     encode zstd gzip
 }
 
-localhost:2016 {
-	respond "Goodbye, world!"
-}
