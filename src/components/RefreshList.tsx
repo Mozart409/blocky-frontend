@@ -22,7 +22,9 @@ export const RefreshList: FC = () => {
 
   return (
     <>
-      <h2>Refresh Block List</h2>
+      <div className="prose prose-lg prose-slate dark:prose-invert">
+        <h2>Refresh Block List</h2>
+      </div>
       <button
         type="button"
         onClick={() => {
