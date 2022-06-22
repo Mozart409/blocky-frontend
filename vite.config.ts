@@ -4,6 +4,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
+// @ts-ignore
 import { dependencies } from './package.json'
 
 // Packages we want in the vendor aka the deps needed in the entire app.
