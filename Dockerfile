@@ -14,7 +14,19 @@ COPY . .
 
 RUN pnpm run build
 
+
+###############################################################################
+#                                                                             #
+#                                                                             #
+#                                                                             #
+#                                                                             #
+#                                                                             #
+###############################################################################
 FROM caddy:2.5.1-alpine as Runner
+
+LABEL org.opencontainers.image.source="https://github.com/Mozart409/blocky-frontend" \
+    org.opencontainers.image.url="https://github.com/Mozart409/blocky-frontend" \
+    org.opencontainers.image.title="Frontend for Blocky a DNS proxy as ad-blocker" 
 
 COPY --from=Builder ./dist /app
 

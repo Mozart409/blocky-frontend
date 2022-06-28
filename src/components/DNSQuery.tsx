@@ -23,12 +23,14 @@ export const DNSQuery: FC = () => {
 
   return (
     <>
-      <h2>DNS Query</h2>
+      <div className="prose prose-lg prose-slate dark:prose-invert">
+        <h2>DNS Query</h2>
+      </div>
 
       <div className="w-full max-w-xs">
         <form
           onSubmit={handleSubmit}
-          className="bg-white shadow-md rounded pt-6 pb-8 mb-4"
+          className="bg-white shadow-md rounded pt-6 pb-8 mb-4 px-4"
         >
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -36,7 +38,6 @@ export const DNSQuery: FC = () => {
               <input
                 required
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                placeholder="1.1.1.1"
                 type="text"
                 onChange={(e) => {
                   setIP(e.target.value)
@@ -61,7 +62,7 @@ export const DNSQuery: FC = () => {
           </div>
           <button
             type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-sky-500 hover:bg-sky-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           >
             <span className="text-white">DNS Query</span>
           </button>
