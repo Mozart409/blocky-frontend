@@ -7,7 +7,7 @@ import { ThemeToggle } from './components/ThemeToggle'
 
 import { ErrorBoundary } from 'react-error-boundary'
 
-function ErrorFallback({ error, resetErrorBoundary }) {
+function ErrorFallback({ error, resetErrorBoundary }: any) {
   return (
     <div role="alert">
       <p>Something went wrong:</p>
