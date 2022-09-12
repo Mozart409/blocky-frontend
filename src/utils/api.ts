@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from 'redaxios'
 
 import { useQuery } from 'react-query'
 
@@ -51,7 +51,7 @@ export function dnsQuery({ ip, type }: IDNSQuery) {
   const url = getFullUrl('/query')
   const data = axios.post(url, {
     query: ip,
-    type,
+    type
   })
   return data
 }

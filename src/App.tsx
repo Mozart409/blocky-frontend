@@ -3,21 +3,39 @@ import { BlockingStatus } from './components/BlockingStatus'
 import { RefreshList } from './components/RefreshList'
 import { DNSQuery } from './components/DNSQuery'
 import { Spacer } from './components/Spacer'
+import { ThemeToggle } from './components/ThemeToggle'
+
+import { ErrorBoundary } from 'react-error-boundary'
+
+function ErrorFallback({ error, resetErrorBoundary }: any) {
+  return (
+    <div role="alert">
+      <p>Something went wrong:</p>
+      <pre>{error.message}</pre>
+      <button onClick={resetErrorBoundary}>Try again</button>
+    </div>
+  )
+}
+
 function App() {
   return (
     <>
-      <main>
-        <BlockingStatus />
-        <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-          <div className="px-4 py-8 sm:px-0">
-            <div className="max-w-3xl mx-auto">
-              <RefreshList />
-              <Spacer />
-              <DNSQuery />
+      <ErrorBoundary FallbackComponent={ErrorFallback}>
+        <main className="">
+          <BlockingStatus />
+          <ThemeToggle />
+          <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div className="px-4 py-8 sm:px-0">
+              <div className="max-w-3xl mx-auto">
+                <RefreshList />
+
+                <Spacer />
+                <DNSQuery />
+              </div>
             </div>
           </div>
-        </div>
-      </main>
+        </main>{' '}
+      </ErrorBoundary>
     </>
   )
 }
