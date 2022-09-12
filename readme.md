@@ -2,6 +2,12 @@
 
 A frontend for the [blocky](https://github.com/0xERR0R/blocky) dns blocker.
 
+## Screenshots
+
+![Lightmode](./docs/lightmode.png)
+
+![Darkmode](./docs/darkmode.png)
+
 ## Features
 
 - Responsive Design
