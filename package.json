@@ -1,7 +1,7 @@
 {
   "name": "blocky-frontend",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.2",
   "scripts": {
     "predev": "docker compose up -d",
     "dev": "vite --host",
