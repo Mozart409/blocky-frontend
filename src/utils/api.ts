@@ -51,7 +51,7 @@ export function dnsQuery({ ip, type }: IDNSQuery) {
   const url = getFullUrl('/query')
   const data = axios.post(url, {
     query: ip,
-    type,
+    type
   })
   return data
 }
