@@ -3,17 +3,22 @@ import { BlockStatusResponse } from './types'
 import { useQuery, UseQueryResult } from 'react-query'
 
 const getFullUrl = (url: string) => {
-  let baseUrl = 'http://localhost:4000/api'
-  /* if (process.env.NODE_ENV === 'development') {
+  let baseUrl: string = ''
+
+  if (process.env.NODE_ENV === 'production') {
+    let API_URL = process.env.API_URL
+    if (API_URL === undefined) {
+      throw new Error('API_URL is undefined. Please set it in .env file.')
+    }
+    baseUrl = process.env.API_URL + '/api'
+  } else {
     baseUrl = 'http://localhost:4000/api'
   }
 
-  if (process.env.NODE_ENV === 'production') {
-    baseUrl = process.env.API_URL + '/api'
-  } */
+  console.debug(`API URL: ${baseUrl}`)
 
   const fullURL = `${baseUrl}${url}`
-  /* console.log(fullURL) */
+
   return fullURL
 }
 
@@ -55,19 +60,3 @@ export function dnsQuery({ ip, type }: IDNSQuery) {
   })
   return data
 }
-
-/* const options = {
-  method: 'POST',
-  url: 'http://localhost:4000/api/query',
-  headers: { 'Content-Type': 'application/json' },
-  data: { query: '1.1.1.1', type: 'A' },
-}
-
-axios
-  .request(options)
-  .then(function (response) {
-    console.log(response.data)
-  })
-  .catch(function (error) {
-    console.error(error)
-  }) */
