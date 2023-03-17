@@ -1,13 +1,13 @@
 {
   "name": "blocky-frontend",
   "private": false,
-  "version": "0.0.3",
+  "version": "0.0.4",
   "scripts": {
     "predev": "docker compose up -d",
     "dev": "vite --host",
     "build": "tsc && vite build",
     "change": "pnpm changeset",
-    "release": "pnpm run build && changeset publish",
+    "release": "pnpm changeset version",
     "start": "vite preview"
   },
   "dependencies": {
