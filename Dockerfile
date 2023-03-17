@@ -1,6 +1,8 @@
-FROM node:14 as Builder
+FROM node:18 as Builder
 
-RUN curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm
+RUN corepack enable
+
+RUN corepack prepare pnpm@v7.29.3 --activate
 
 # Files required by pnpm install
 COPY package.json pnpm-lock.yaml ./
@@ -22,7 +24,7 @@ RUN pnpm run build
 #                                                                             #
 #                                                                             #
 ###############################################################################
-FROM caddy:2.5.1-alpine as Runner
+FROM caddy:2.6.4-alpine as Runner
 
 LABEL org.opencontainers.image.source="https://github.com/Mozart409/blocky-frontend" \
     org.opencontainers.image.url="https://github.com/Mozart409/blocky-frontend" \
