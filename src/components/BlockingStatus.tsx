@@ -2,20 +2,17 @@ import { FC } from 'react'
 import {
   disableBlocking,
   useBlockingStatus,
-  enableBlocking,
+  enableBlocking
 } from '../utils/api'
 import { useMutation, useQueryClient } from 'react-query'
-
-interface IBlockingStatus {
-  enabled: boolean
-  disabledGroups?: any
-  autoEnableInSec: number
-}
 
 export const BlockingStatus: FC = () => {
   const { status, data, error, isFetching } = useBlockingStatus()
 
-  const blockingData: IBlockingStatus = data
+  if (data === undefined) {
+    return null
+  }
+  const blockingData = data
 
   if (error) {
     return (
@@ -63,7 +60,7 @@ export function Banner({ status }: { status: boolean }) {
     {
       onSuccess: () => {
         queryClient.invalidateQueries('blocking')
-      },
+      }
     }
   )
 
@@ -74,7 +71,7 @@ export function Banner({ status }: { status: boolean }) {
     {
       onSuccess: () => {
         queryClient.invalidateQueries('blocking')
-      },
+      }
     }
   )
 
