@@ -1,6 +1,6 @@
 import axios from 'redaxios'
-
-import { useQuery } from 'react-query'
+import { BlockStatusResponse } from './types'
+import { useQuery, UseQueryResult } from 'react-query'
 
 const getFullUrl = (url: string) => {
   let baseUrl = 'http://localhost:4000/api'
@@ -17,7 +17,7 @@ const getFullUrl = (url: string) => {
   return fullURL
 }
 
-export function useBlockingStatus() {
+export function useBlockingStatus(): UseQueryResult<BlockStatusResponse> {
   return useQuery(['blocking'], async () => {
     const url = getFullUrl('/blocking/status')
     const { data } = await axios.get(url)
