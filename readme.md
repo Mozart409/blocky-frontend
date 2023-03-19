@@ -44,7 +44,7 @@ Start the development server
 Production version frontend runs on [http://localhost:81](http://localhost:81)
 
 ```bash
-  docker compose up -d
+  docker compose up -d --remove-orphans
 ```
 
 ## Authors
