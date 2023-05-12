@@ -17,4 +17,4 @@ services:
       - blocky
     image: ghcr.io/mozart409/blocky-frontend:latest
     ports:
-      - '81:80'
+      - '8002:8002'
