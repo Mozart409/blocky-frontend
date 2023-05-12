@@ -1,5 +1,15 @@
 # blocky-frontend
 
+## 0.1.0
+
+### Minor Changes
+
+- # Changes
+
+  bumped the dependency versions
+  added more types
+  fix issue #35 API_URL in production
+
 ## 0.0.4
 
 ### Patch Changes

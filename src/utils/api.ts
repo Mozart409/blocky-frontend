@@ -6,11 +6,11 @@ const getFullUrl = (url: string) => {
   let baseUrl: string = ''
 
   if (process.env.NODE_ENV === 'production') {
-    let API_URL = process.env.API_URL
+    let API_URL = import.meta.env.API_URL
     if (API_URL === undefined) {
       throw new Error('API_URL is undefined. Please set it in .env file.')
     }
-    baseUrl = process.env.API_URL + '/api'
+    baseUrl = import.meta.env.API_URL + '/api'
   } else {
     baseUrl = 'http://localhost:4000/api'
   }
