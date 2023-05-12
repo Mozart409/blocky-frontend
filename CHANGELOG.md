@@ -4,11 +4,9 @@
 
 ### Minor Changes
 
-- # Changes
-
-  bumped the dependency versions
-  added more types
-  fix issue #35 API_URL in production
+- bumped the dependency versions
+- added more types
+- fix issue #35 API_URL in production
 
 ## 0.0.4
 
