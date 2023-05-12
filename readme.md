@@ -41,7 +41,7 @@ Start the development server
   pnpm run dev
 ```
 
-Production version frontend runs on [http://localhost:81](http://localhost:81)
+Production version frontend runs on [http://localhost:8002](http://localhost:8002)
 
 ```bash
   docker compose up -d --remove-orphans
