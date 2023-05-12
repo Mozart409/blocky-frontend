@@ -2,7 +2,7 @@ FROM node:18 as Builder
 
 RUN corepack enable
 
-RUN corepack prepare pnpm@v7.29.3 --activate
+RUN corepack prepare pnpm@v8.5.0 --activate
 
 # Files required by pnpm install
 COPY package.json pnpm-lock.yaml ./
