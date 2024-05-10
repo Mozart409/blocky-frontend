@@ -13,6 +13,8 @@ services:
   blocky-frontend:
     depends_on:
       - blocky
-    image: ghcr.io/mozart409/blocky-frontend:latest
+    # image: ghcr.io/mozart409/blocky-frontend:latest
+    build:
+      context: .
     ports:
       - '8002:8002'

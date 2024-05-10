@@ -5,10 +5,14 @@
   "scripts": {
     "predev": "docker compose up -d",
     "dev": "vite --host",
+    "down": "docker compose down",
+    "up": "docker compose up",
     "build": "tsc && vite build",
     "change": "pnpm changeset",
     "release": "pnpm changeset version",
-    "start": "vite preview"
+    "start": "vite preview",
+    "image": "docker build -t mozart409/blocky-frontend:latest .",
+    "commit": "cz"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.14",
@@ -30,6 +34,9 @@
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react-swc": "^3.6.0",
     "autoprefixer": "^10.4.19",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "lefthook": "^1.6.10",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.4.5",

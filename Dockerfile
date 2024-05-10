@@ -2,14 +2,13 @@ FROM node:18 as Builder
 
 RUN corepack enable
 
-RUN corepack prepare pnpm@v8.5.0 --activate
+RUN corepack prepare pnpm@9.1.0 --activate
 
 # Files required by pnpm install
 COPY package.json pnpm-lock.yaml ./
 
 # PRODUCTION BUILD
-RUN pnpm install --frozen-lockfile
-
+RUN pnpm install 
 # Bundle app source
 COPY . .
 
