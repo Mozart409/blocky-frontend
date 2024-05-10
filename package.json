@@ -1,7 +1,7 @@
 {
   "name": "blocky-frontend",
   "private": false,
-  "version": "0.1.1",
+  "version": "0.2.0",
   "scripts": {
     "predev": "docker compose up -d",
     "dev": "vite --host",
@@ -12,27 +12,27 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.14",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-error-boundary": "^4.0.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-error-boundary": "^4.0.13",
     "react-hot-toast": "^2.4.1",
     "react-query": "^3.39.3",
     "redaxios": "^0.5.1",
-    "usehooks-ts": "^2.9.1"
+    "usehooks-ts": "^3.1.0"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.26.1",
-    "@tailwindcss/forms": "^0.5.3",
-    "@tailwindcss/typography": "^0.5.9",
-    "@total-typescript/ts-reset": "^0.4.2",
-    "@types/node": "^18.15.3",
-    "@types/react": "^18.2.6",
-    "@types/react-dom": "^18.2.4",
-    "@vitejs/plugin-react-swc": "^3.3.1",
-    "autoprefixer": "^10.4.14",
-    "postcss": "^8.4.31",
-    "tailwindcss": "^3.3.2",
-    "typescript": "^5.0.4",
+    "@changesets/cli": "^2.27.1",
+    "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/typography": "^0.5.13",
+    "@total-typescript/ts-reset": "^0.5.1",
+    "@types/node": "^20.12.11",
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react-swc": "^3.6.0",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.3",
+    "typescript": "^5.4.5",
     "vite": "^4.5.3"
   }
 }

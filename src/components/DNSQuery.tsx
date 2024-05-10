@@ -27,7 +27,7 @@ export const DNSQuery: FC = () => {
         <h2>DNS Query</h2>
       </div>
 
-      <div className="w-full max-w-xs">
+      <div className="w-full grid grid-cols-1 gap-x-4 lg:grid-cols-2">
         <form
           onSubmit={handleSubmit}
           className="bg-white shadow-md rounded pt-6 pb-8 mb-4 px-4"
