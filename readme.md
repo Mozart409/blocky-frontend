@@ -41,6 +41,8 @@ Start the development server
   pnpm run dev
 ```
 
+Change the .env.example to .env.local for local development.
+
 Production version frontend runs on [http://localhost:8002](http://localhost:8002)
 
 ```bash

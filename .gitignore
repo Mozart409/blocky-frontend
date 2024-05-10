@@ -24,5 +24,4 @@ dist-ssr
 *.sw?
 
 .env.local
-.env.*
 target/
