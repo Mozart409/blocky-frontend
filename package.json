@@ -2,6 +2,8 @@
   "name": "blocky-frontend",
   "private": false,
   "version": "0.2.1",
+  "license": "MIT",
+  "type": "module",
   "scripts": {
     "predev": "docker compose up -d",
     "dev": "vite --host",
@@ -12,10 +14,10 @@
     "release": "pnpm changeset version",
     "start": "vite preview",
     "image": "docker build -t mozart409/blocky-frontend:latest .",
-    "commit": "cz"
+    "commit": "cz",
+    "knip": "knip"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.14",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-error-boundary": "^4.0.13",
@@ -36,10 +38,11 @@
     "autoprefixer": "^10.4.19",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
+    "knip": "^5.39.2",
     "lefthook": "^1.6.10",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.3",
-    "typescript": "^5.4.5",
+    "typescript": "^5.7.2",
     "vite": "^6.0.3"
   }
 }
