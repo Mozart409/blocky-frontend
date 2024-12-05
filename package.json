@@ -18,6 +18,7 @@
     "knip": "knip"
   },
   "dependencies": {
+    "cssnano": "^7.0.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-error-boundary": "^4.0.13",
@@ -35,14 +36,15 @@
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@vitejs/plugin-react-swc": "^3.6.0",
-    "autoprefixer": "^10.4.19",
+    "autoprefixer": "^10.4.20",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
     "knip": "^5.39.2",
     "lefthook": "^1.6.10",
-    "postcss": "^8.4.38",
-    "tailwindcss": "^3.4.3",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.16",
     "typescript": "^5.7.2",
     "vite": "^6.0.3"
-  }
+  },
+  "packageManager": "pnpm@9.14.4"
 }
