@@ -39,5 +39,7 @@ pre-commit:
   commands:
     build:
       run: pnpm run build
+pre-push:
+  commands:
     image:
       run: pnpm run image
