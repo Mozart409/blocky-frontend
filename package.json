@@ -1,7 +1,7 @@
 {
   "name": "blocky-frontend",
   "private": false,
-  "version": "0.2.1",
+  "version": "0.2.2",
   "scripts": {
     "predev": "docker compose up -d",
     "dev": "vite --host",
@@ -11,7 +11,7 @@
     "change": "pnpm changeset",
     "release": "pnpm changeset version",
     "start": "vite preview",
-    "image": "docker build -t mozart409/blocky-frontend:latest .",
+    "image": "docker buildx build --platform linux/arm/v7,linux/arm64/v8,linux/amd64 -t mozart409/blocky-frontend:latest .",
     "commit": "cz"
   },
   "dependencies": {
@@ -41,5 +41,11 @@
     "tailwindcss": "^3.4.3",
     "typescript": "^5.4.5",
     "vite": "^4.5.5"
+  },
+  "packageManager": "pnpm@10.6.4",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
   }
 }
