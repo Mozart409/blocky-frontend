@@ -25,7 +25,7 @@ LABEL org.opencontainers.image.source="https://github.com/Mozart409/blocky-front
     org.opencontainers.image.url="https://github.com/Mozart409/blocky-frontend" \
     org.opencontainers.image.title="Frontend for Blocky a DNS proxy as ad-blocker" 
 
-COPY --from=Builder ./dist /app
+COPY --from=builder ./dist /app
 
 COPY ./Caddyfile ./Caddyfile
 
