@@ -32,3 +32,11 @@ docker-compose.yaml
 docker-compose.yml
 Dockerfile
 readme.md
+
+node_modules
+dist
+.git
+.gitignore
+Dockerfile
+.env
+*.log
