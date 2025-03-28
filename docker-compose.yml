@@ -1,6 +1,6 @@
 services:
   blocky:
-    image: ghcr.io/0xerr0r/blocky:v0.23
+    image: ghcr.io/0xerr0r/blocky:v0.25
     ports:
       - '54:53/tcp'
       - '54:53/udp'
