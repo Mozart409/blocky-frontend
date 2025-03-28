@@ -1,7 +1,8 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 body {
   @apply bg-slate-50 dark:bg-slate-800;
 }
+
+@custom-variant dark (&:where(.dark, .dark *));
+@plugin "@tailwindcss/typography";
