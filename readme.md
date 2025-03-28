@@ -14,6 +14,7 @@ A frontend for the [blocky](https://github.com/0xERR0R/blocky) dns blocker.
 - Enable / Disable Blocking
 - DNS Queries
 - Refresh Blocklists
+- Flush the cache
 
 ## Run Locally
 
