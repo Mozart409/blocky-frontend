@@ -1,8 +1,8 @@
-FROM node:22 AS builder
+FROM node:22-alpine as Builder
 
 RUN corepack enable
 
-RUN corepack prepare pnpm@10.6.4 --activate
+RUN corepack prepare pnpm@10.7.0 --activate
 
 # Files required by pnpm install
 COPY package.json pnpm-lock.yaml ./
@@ -19,7 +19,7 @@ RUN echo $NODE_ENV
 RUN echo "################"
 RUN pnpm run build
 
-FROM caddy:2.9.1-alpine AS runner
+FROM caddy:2.9.1-alpine as Runner
 
 LABEL org.opencontainers.image.source="https://github.com/Mozart409/blocky-frontend" \
     org.opencontainers.image.url="https://github.com/Mozart409/blocky-frontend" \
