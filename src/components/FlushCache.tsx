@@ -1,22 +1,22 @@
-import { FC } from 'react'
-import { flushCache, } from '../utils/api'
-import { useMutation, } from 'react-query'
-import toast from 'react-hot-toast'
+import type { FC } from "react";
+import toast from "react-hot-toast";
+import { useMutation } from "react-query";
+import { flushCache } from "../utils/api";
 export const FlushCache: FC = () => {
   const mutationRefresh = useMutation(
     async () => {
-      return await flushCache()
+      return await flushCache();
     },
     {
       onSuccess: () => {
-        toast.success('Cached flushed!')
+        toast.success("Cached flushed!");
       },
 
       onError: () => {
-        toast.error('Error! flushing the cache failed.')
+        toast.error("Error! flushing the cache failed.");
       },
-    }
-  )
+    },
+  );
 
   return (
     <>
@@ -26,12 +26,12 @@ export const FlushCache: FC = () => {
       <button
         type="button"
         onClick={() => {
-          mutationRefresh.mutate()
+          mutationRefresh.mutate();
         }}
         className="flex p-2 rounded-md bg-sky-500 hover:bg-sky-400 focus:outline-none focus:ring-2 focus:ring-white"
       >
         <span className="text-white">Flush cache</span>
       </button>
     </>
-  )
-}
+  );
+};

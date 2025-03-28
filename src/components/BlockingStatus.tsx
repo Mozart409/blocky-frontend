@@ -1,18 +1,18 @@
-import { FC } from 'react'
+import type { FC } from "react";
+import { useMutation, useQueryClient } from "react-query";
 import {
   disableBlocking,
+  enableBlocking,
   useBlockingStatus,
-  enableBlocking
-} from '../utils/api'
-import { useMutation, useQueryClient } from 'react-query'
+} from "../utils/api";
 
 export const BlockingStatus: FC = () => {
-  const { status, data, error, isFetching } = useBlockingStatus()
+  const { status, data, error, isFetching } = useBlockingStatus();
 
   if (data === undefined) {
-    return null
+    return null;
   }
-  const blockingData = data
+  const blockingData = data;
 
   if (error) {
     return (
@@ -28,7 +28,7 @@ export const BlockingStatus: FC = () => {
                 <button
                   type="button"
                   onClick={() => {
-                    window.location.reload()
+                    window.location.reload();
                   }}
                 >
                   <p className="text-white font-bold underline"> Retry</p>
@@ -38,42 +38,42 @@ export const BlockingStatus: FC = () => {
           </div>
         </div>
       </div>
-    )
+    );
   }
 
   if (data) {
     return (
-      <>{status === 'success' && <Banner status={blockingData.enabled} />}</>
-    )
+      <>{status === "success" && <Banner status={blockingData.enabled} />}</>
+    );
   }
 
-  return null
-}
+  return null;
+};
 
 export function Banner({ status }: { status: boolean }) {
-  const queryClient = useQueryClient()
+  const queryClient = useQueryClient();
 
   const mutationEnable = useMutation(
     async () => {
-      return await enableBlocking()
+      return await enableBlocking();
     },
     {
       onSuccess: () => {
-        queryClient.invalidateQueries('blocking')
-      }
-    }
-  )
+        queryClient.invalidateQueries("blocking");
+      },
+    },
+  );
 
   const mutationDisable = useMutation(
     async () => {
-      return await disableBlocking()
+      return await disableBlocking();
     },
     {
       onSuccess: () => {
-        queryClient.invalidateQueries('blocking')
-      }
-    }
-  )
+        queryClient.invalidateQueries("blocking");
+      },
+    },
+  );
 
   if (status === true) {
     return (
@@ -89,11 +89,11 @@ export function Banner({ status }: { status: boolean }) {
                 <button
                   type="button"
                   onClick={() => {
-                    mutationDisable.mutate()
+                    mutationDisable.mutate();
                   }}
                 >
                   <p className="text-white font-bold underline">
-                    {' '}
+                    {" "}
                     Disable Blocking
                   </p>
                 </button>
@@ -102,7 +102,7 @@ export function Banner({ status }: { status: boolean }) {
           </div>
         </div>
       </div>
-    )
+    );
   }
 
   if (status === false) {
@@ -119,11 +119,11 @@ export function Banner({ status }: { status: boolean }) {
                 <button
                   type="button"
                   onClick={() => {
-                    mutationEnable.mutate()
+                    mutationEnable.mutate();
                   }}
                 >
                   <p className="text-white font-bold underline">
-                    {' '}
+                    {" "}
                     Enable Blocking
                   </p>
                 </button>
@@ -132,8 +132,8 @@ export function Banner({ status }: { status: boolean }) {
           </div>
         </div>
       </div>
-    )
+    );
   }
 
-  return null
+  return null;
 }

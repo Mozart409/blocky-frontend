@@ -1,25 +1,29 @@
-import { FC, useState } from 'react'
-import { dnsQuery, refreshLists } from '../utils/api'
-import { useMutation, useQueryClient } from 'react-query'
-import toast from 'react-hot-toast'
+import { type FC, useState } from "react";
+import toast from "react-hot-toast";
+import { useMutation, useQueryClient } from "react-query";
+import { dnsQuery, refreshLists } from "../utils/api";
 
-const queryTypes = ['A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA', 'TXT']
+const queryTypes = ["A", "AAAA", "CNAME", "MX", "NS", "PTR", "SOA", "TXT"];
 
 export const DNSQuery: FC = () => {
-  const queryClient = useQueryClient()
+  const queryClient = useQueryClient();
 
-  const [ip, setIP] = useState<string>('')
-  const [type, setType] = useState<string>(queryTypes[0])
+  const [ip, setIP] = useState<string>("");
+  const [type, setType] = useState<string>(queryTypes[0]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
-      const res = await dnsQuery({ ip, type })
-      toast.success(`Query is ${res.data.responseType}`)
-    } catch (error: any) {
-      toast.error(error)
+      const res = await dnsQuery({ ip, type });
+      toast.success(`Query is ${res.data.responseType}`);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        toast.error(error.message);
+      } else {
+        toast.error("An unknown error occurred.");
+      }
     }
-  }
+  };
 
   return (
     <>
@@ -40,7 +44,7 @@ export const DNSQuery: FC = () => {
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 type="text"
                 onChange={(e) => {
-                  setIP(e.target.value)
+                  setIP(e.target.value);
                 }}
               />
             </label>
@@ -58,7 +62,7 @@ export const DNSQuery: FC = () => {
                   </option>
                 ))}
               </select>
-            </label>{' '}
+            </label>{" "}
           </div>
           <button
             type="submit"
@@ -69,5 +73,5 @@ export const DNSQuery: FC = () => {
         </form>
       </div>
     </>
-  )
-}
+  );
+};

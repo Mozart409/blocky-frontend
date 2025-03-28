@@ -1,5 +1,5 @@
-import { FC } from 'react'
+import type { FC } from "react";
 
 export const Spacer: FC = () => {
-  return <div className="h-16" />
-}
+  return <div className="h-16" />;
+};
