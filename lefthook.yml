@@ -42,7 +42,8 @@ pre-commit:
     fix:
       run: pnpm run fix
       stage_fixed: true
-pre-push:
-  commands:
-    image:
-      run: pnpm run image-amd
+
+# pre-push:
+#   commands:
+#     image:
+#       run: pnpm run image-amd
