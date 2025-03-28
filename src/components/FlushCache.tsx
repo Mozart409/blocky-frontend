@@ -13,7 +13,7 @@ export const FlushCache: FC = () => {
       },
 
       onError: () => {
-        toast.error("Error! flushing the cache failed.");
+        toast.error("Error! Flushing the cache failed.");
       },
     },
   );
