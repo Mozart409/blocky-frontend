@@ -60,3 +60,10 @@ export function dnsQuery({ ip, type }: IDNSQuery) {
   })
   return data
 }
+
+
+export function flushCache() {
+  const url = getFullUrl('/cache/flush')
+  const data = axios.post(url)
+  return data
+}

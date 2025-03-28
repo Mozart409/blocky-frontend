@@ -1,19 +1,19 @@
 import { FC } from 'react'
-import { refreshLists } from '../utils/api'
-import { useMutation, useQueryClient } from 'react-query'
+import { flushCache, } from '../utils/api'
+import { useMutation, } from 'react-query'
 import toast from 'react-hot-toast'
-export const RefreshList: FC = () => {
+export const FlushCache: FC = () => {
   const mutationRefresh = useMutation(
     async () => {
-      return await refreshLists()
+      return await flushCache()
     },
     {
       onSuccess: () => {
-        toast.success('Refreshed!')
+        toast.success('Cached flushed!')
       },
 
       onError: () => {
-        toast.error('Error! Refreshing the list failed.')
+        toast.error('Error! flushing the cache failed.')
       },
     }
   )
@@ -21,7 +21,7 @@ export const RefreshList: FC = () => {
   return (
     <>
       <div className="prose prose-lg prose-slate dark:prose-invert">
-        <h2>Refresh Block List</h2>
+        <h2>Flush cache</h2>
       </div>
       <button
         type="button"
@@ -30,7 +30,7 @@ export const RefreshList: FC = () => {
         }}
         className="flex p-2 rounded-md bg-sky-500 hover:bg-sky-400 focus:outline-none focus:ring-2 focus:ring-white"
       >
-        <span className="text-white">Refresh Lists</span>
+        <span className="text-white">Flush cache</span>
       </button>
     </>
   )

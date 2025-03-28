@@ -4,6 +4,7 @@ import { DNSQuery } from './components/DNSQuery'
 import { Spacer } from './components/Spacer'
 import { ThemeToggle } from './components/ThemeToggle'
 import { FallbackProps, ErrorBoundary } from 'react-error-boundary'
+import { FlushCache } from './components/FlushCache'
 import '@total-typescript/ts-reset'
 
 function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
@@ -28,8 +29,10 @@ function App() {
           <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div className="px-4 py-8 sm:px-0">
               <div className="max-w-3xl mx-auto">
-                <RefreshList />
-
+                <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
+                  <RefreshList />
+                  <FlushCache />
+                </div>
                 <Spacer />
                 <DNSQuery />
               </div>
