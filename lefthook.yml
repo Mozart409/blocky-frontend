@@ -42,4 +42,4 @@ pre-commit:
 pre-push:
   commands:
     image:
-      run: pnpm run image
+      run: pnpm run image-amd
