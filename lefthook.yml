@@ -39,6 +39,9 @@ pre-commit:
   commands:
     build:
       run: pnpm run build
+    fix:
+      run: pnpm run fix
+      stage_fixed: true
 pre-push:
   commands:
     image:

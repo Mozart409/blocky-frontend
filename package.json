@@ -13,7 +13,10 @@
     "start": "vite preview",
     "image": "docker buildx build --platform linux/arm/v7,linux/arm64/v8,linux/amd64 -t mozart409/blocky-frontend:latest .",
     "image-amd": "docker buildx build --platform linux/amd64 -t mozart409/blocky-frontend:latest .",
-    "commit": "cz"
+    "commit": "cz",
+    "fmt": "pnpm biome format --write ./src",
+    "lint": "pnpm biome lint --write ./src",
+    "fix": "pnpm biome check --write ./src"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.14",
@@ -26,6 +29,7 @@
     "usehooks-ts": "^3.1.0"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
     "@changesets/cli": "^2.27.1",
     "@tailwindcss/forms": "^0.5.7",
     "@tailwindcss/typography": "^0.5.13",
@@ -46,11 +50,13 @@
   "packageManager": "pnpm@10.6.4",
   "pnpm": {
     "onlyBuiltDependencies": [
-      "esbuild"
+      "@biomejs/biome",
+      "@swc/core",
+      "esbuild",
+      "lefthook"
     ]
   },
   "engines": {
     "node": "22"
   }
 }
-
