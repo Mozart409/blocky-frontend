@@ -1,6 +1,7 @@
 services:
   blocky:
-    image: ghcr.io/0xerr0r/blocky:v0.23
+    container_name: blocky
+    image: ghcr.io/0xerr0r/blocky:v0.28.2
     ports:
       - '54:53/tcp'
       - '54:53/udp'
@@ -8,9 +9,11 @@ services:
     environment:
       - TZ=Europe/Berlin # Optional to synchronize the log timestamp with host
     volumes:
+      - /etc/localtime:/etc/localtime:ro
       # config file
       - ./blocky/config.yml:/app/config.yml
   blocky-frontend:
+    container_name: frontend
     depends_on:
       - blocky
     # image: ghcr.io/mozart409/blocky-frontend:latest

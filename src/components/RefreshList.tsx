@@ -1,24 +1,19 @@
 import { FC } from 'react'
-import { refreshLists } from '../utils/api'
-import { useMutation, useQueryClient } from 'react-query'
+import { useMutation } from '@tanstack/react-query'
 import toast from 'react-hot-toast'
+
+import { listRefresh } from '../api/endpoints/lists/lists'
+
 export const RefreshList: FC = () => {
-  const queryClient = useQueryClient()
-
-  const mutationRefresh = useMutation(
-    async () => {
-      return await refreshLists()
+  const mutationRefresh = useMutation({
+    mutationFn: () => listRefresh(),
+    onSuccess: () => {
+      toast.success('Refreshed!')
     },
-    {
-      onSuccess: () => {
-        toast.success('Refreshed!')
-      },
-
-      onError: () => {
-        toast.error('Error! Refreshing the list failed.')
-      },
+    onError: () => {
+      toast.error('Error! Refreshing the list failed.')
     }
-  )
+  })
 
   return (
     <>

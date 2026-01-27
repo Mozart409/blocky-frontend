@@ -1,12 +1,10 @@
 {
   "name": "blocky-frontend",
   "private": false,
-  "version": "0.2.2",
+  "version": "1.0.0",
   "scripts": {
-    "predev": "docker compose up -d",
+    "api:generate": "orval",
     "dev": "vite --host",
-    "down": "docker compose down",
-    "up": "docker compose up",
     "build": "tsc && vite build",
     "change": "pnpm changeset",
     "release": "pnpm changeset version",
@@ -16,41 +14,47 @@
     "commit": "cz"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.14",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-error-boundary": "^4.0.13",
-    "react-hot-toast": "^2.4.1",
-    "react-query": "^3.39.3",
-    "redaxios": "^0.5.1",
+    "@tanstack/react-query": "^5.90.20",
+    "axios": "^1.13.4",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-error-boundary": "^6.1.0",
+    "react-hot-toast": "^2.6.0",
     "usehooks-ts": "^3.1.0"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.27.1",
-    "@tailwindcss/forms": "^0.5.7",
-    "@tailwindcss/typography": "^0.5.13",
-    "@total-typescript/ts-reset": "^0.5.1",
-    "@types/node": "^20.12.11",
-    "@types/react": "^18.3.1",
-    "@types/react-dom": "^18.3.0",
-    "@vitejs/plugin-react-swc": "^3.6.0",
-    "autoprefixer": "^10.4.19",
+    "@changesets/cli": "^2.29.8",
+    "@tailwindcss/forms": "^0.5.11",
+    "@tailwindcss/typography": "^0.5.19",
+    "@tailwindcss/vite": "^4.1.18",
+    "@tanstack/react-query-devtools": "^5.91.2",
+    "@total-typescript/ts-reset": "^0.6.1",
+    "@types/node": "^25.0.10",
+    "@types/react": "^19.2.10",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react-swc": "^4.2.2",
+    "autoprefixer": "^10.4.23",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
-    "lefthook": "^1.6.10",
-    "postcss": "^8.4.38",
-    "tailwindcss": "^3.4.3",
-    "typescript": "^5.4.5",
-    "vite": "^5.4.21"
+    "lefthook": "^2.0.16",
+    "orval": "^8.1.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.18",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1"
   },
-  "packageManager": "pnpm@10.6.4",
+  "packageManager": "pnpm@10.28.2",
   "pnpm": {
     "onlyBuiltDependencies": [
-      "esbuild"
+      "@swc/core",
+      "esbuild",
+      "lefthook"
+    ],
+    "ignoredBuiltDependencies": [
+      "lefthook"
     ]
   },
   "engines": {
-    "node": "22"
+    "node": "24"
   }
 }
-

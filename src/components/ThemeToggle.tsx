@@ -1,12 +1,6 @@
 import { useDarkMode } from 'usehooks-ts'
 import { FC, useEffect } from 'react'
 
-import { Switch } from '@headlessui/react'
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ')
-}
-
 export const ThemeToggle: FC = () => {
   const { isDarkMode, toggle, enable, disable } = useDarkMode()
 

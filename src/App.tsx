@@ -7,11 +7,12 @@ import { FallbackProps, ErrorBoundary } from 'react-error-boundary'
 import '@total-typescript/ts-reset'
 
 function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
+  const errorMessage = error instanceof Error ? error.message : 'Unknown error'
   return (
     <>
       <div role="alert">
         <p>Something went wrong:</p>
-        <pre>{error.message}</pre>
+        <pre>{errorMessage}</pre>
         <button onClick={resetErrorBoundary}>Try again</button>
       </div>
     </>
@@ -29,7 +30,6 @@ function App() {
             <div className="px-4 py-8 sm:px-0">
               <div className="max-w-3xl mx-auto">
                 <RefreshList />
-
                 <Spacer />
                 <DNSQuery />
               </div>
