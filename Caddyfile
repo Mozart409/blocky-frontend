@@ -1,6 +1,16 @@
 :8002 {
     root * /app
-    file_server
     encode zstd gzip
+
+    # Proxy API requests to blocky backend
+    handle /api/* {
+        reverse_proxy blocky:4000
+    }
+
+    # Serve static files and handle SPA routing
+    handle {
+        try_files {path} /index.html
+        file_server
+    }
 }
 
