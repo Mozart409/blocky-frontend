@@ -1,5 +1,27 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Build outputs
+dist/
+dist-ssr/
+build/
+
+# Environment files
+.env*
+!.env.example
+
+# Version control
+.git/
+.gitignore
+
+# Docker files
+Dockerfile*
+docker-compose*.yaml
+docker-compose*.yml
+
 # Logs
-logs
+logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
@@ -7,15 +29,16 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# Cache directories
+.cache/
+.npm/
+.pnpm/
+.yarn/
 
 # Editor directories and files
-.vscode/*
+.vscode/
 !.vscode/extensions.json
-.idea
+.idea/
 .DS_Store
 *.suo
 *.ntvs*
@@ -23,20 +46,18 @@ dist-ssr
 *.sln
 *.sw?
 
-blocky
-dist
-.env*
-.env.example
-.gitignore
-docker-compose.yaml
-docker-compose.yml
-Dockerfile
-readme.md
+# OS generated files
+Thumbs.db
+.DS_Store
 
-node_modules
-dist
-.git
-.gitignore
-Dockerfile
-.env
-*.log
+# Test coverage
+coverage/
+
+# Temporary files
+*.tmp
+*.temp
+*.local
+
+# Documentation
+*.md
+README*

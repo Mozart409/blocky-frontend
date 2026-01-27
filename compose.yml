@@ -1,5 +1,6 @@
 services:
   blocky:
+    container_name: blocky
     image: ghcr.io/0xerr0r/blocky:v0.28.2
     ports:
       - '54:53/tcp'
@@ -12,6 +13,7 @@ services:
       # config file
       - ./blocky/config.yml:/app/config.yml
   blocky-frontend:
+    container_name: frontend
     depends_on:
       - blocky
     # image: ghcr.io/mozart409/blocky-frontend:latest
