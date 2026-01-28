@@ -8,3 +8,14 @@ updates:
     open-pull-requests-limit: 10
     assignees:
       - Mozart409
+
+  # Maintain npm dependencies
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'daily'
+    open-pull-requests-limit: 10
+    assignees:
+      - Mozart409
+    # pnpm is used as package manager
+    versioning-strategy: increase
