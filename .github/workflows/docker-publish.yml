@@ -40,8 +40,8 @@ jobs:
     # Setup Docker buildx (remove deprecated install parameter)
     - name: Setup Docker buildx
       uses: docker/setup-buildx-action@v3
-      env:
-        BUILDX_BUILDER: default
+      with:
+        platforms: linux/amd64,linux/arm64
 
 
 
