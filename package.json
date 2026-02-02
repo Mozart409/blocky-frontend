@@ -29,7 +29,7 @@
     "@tailwindcss/vite": "^4.1.18",
     "@tanstack/react-query-devtools": "^5.91.3",
     "@total-typescript/ts-reset": "^0.6.1",
-    "@types/node": "^25.1.0",
+    "@types/node": "^25.2.0",
     "@types/react": "^19.2.10",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react-swc": "^4.2.2",
