@@ -33,7 +33,7 @@
     "@types/react": "^19.2.10",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react-swc": "^4.2.2",
-    "autoprefixer": "^10.4.23",
+    "autoprefixer": "^10.4.24",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
     "lefthook": "^2.0.16",
