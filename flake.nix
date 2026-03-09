@@ -24,9 +24,13 @@
             ni
             docker-compose
             opencode
+            cocogitto
+            actionlint
           ];
 
           shellHook = ''
+            lefthook install
+            cog install-hook
             echo "Blocky Frontend dev environment loaded"
             echo "Node: $(node --version)"
             echo "pnpm: $(pnpm --version)"
