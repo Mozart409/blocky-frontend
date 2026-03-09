@@ -1,4 +1,5 @@
-FROM node:24 AS builder
+# syntax=docker/dockerfile:1
+FROM node:24-alpine AS builder
 
 # Enable pnpm
 RUN corepack enable && corepack prepare pnpm@10.28.2 --activate
@@ -9,8 +10,9 @@ WORKDIR /app
 # Copy dependency files first (for better Docker layer caching)
 COPY package.json pnpm-lock.yaml ./
 
-# Install dependencies (this layer will be cached if package files don't change)
-RUN pnpm install --frozen-lockfile
+# Install dependencies with cache mount for faster rebuilds
+RUN --mount=type=cache,target=/root/.local/share/pnpm/store \
+    pnpm install --frozen-lockfile
 
 # Copy source code (this invalidates cache only when source changes)
 COPY . .
@@ -23,11 +25,19 @@ FROM caddy:2.10.2-alpine AS runner
 
 LABEL org.opencontainers.image.source="https://github.com/Mozart409/blocky-frontend" \
     org.opencontainers.image.url="https://github.com/Mozart409/blocky-frontend" \
-    org.opencontainers.image.title="Frontend for Blocky a DNS proxy as ad-blocker" 
+    org.opencontainers.image.title="Frontend for Blocky a DNS proxy as ad-blocker"
 
-COPY --from=builder /app/dist /app
+# Create non-root user for security
+RUN adduser -D -u 1000 appuser
 
-COPY ./Caddyfile ./Caddyfile
+# Copy built assets
+COPY --from=builder --chown=appuser:appuser /app/dist /app
+
+# Copy Caddyfile
+COPY --chown=appuser:appuser ./Caddyfile /etc/caddy/Caddyfile
+
+# Switch to non-root user
+USER appuser
 
 EXPOSE 8002
 
@@ -35,4 +45,4 @@ EXPOSE 8002
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
     CMD wget --no-verbose --tries=1 --spider http://localhost:8002/ || exit 1
 
-CMD [ "caddy", "run", "--config", "./Caddyfile" ]
+CMD [ "caddy", "run", "--config", "/etc/caddy/Caddyfile" ]

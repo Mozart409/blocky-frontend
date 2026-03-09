@@ -6,19 +6,23 @@ node_modules/
 dist/
 dist-ssr/
 build/
+*.tsbuildinfo
 
 # Environment files
 .env*
 !.env.example
+.envrc
 
 # Version control
 .git/
 .gitignore
+.github/
 
 # Docker files
 Dockerfile*
 docker-compose*.yaml
 docker-compose*.yml
+.dockerignore
 
 # Logs
 logs/
@@ -34,6 +38,9 @@ lerna-debug.log*
 .npm/
 .pnpm/
 .yarn/
+*.pid
+*.seed
+*.pid.lock
 
 # Editor directories and files
 .vscode/
@@ -52,6 +59,7 @@ Thumbs.db
 
 # Test coverage
 coverage/
+.nyc_output/
 
 # Temporary files
 *.tmp
@@ -61,3 +69,21 @@ coverage/
 # Documentation
 *.md
 README*
+CHANGELOG*
+LICENSE*
+docs/
+
+# Development tools
+lefthook.yml
+.changeset/
+
+# Nix files
+*.nix
+flake.lock
+
+# Blocky config (for local development)
+blocky/
+
+# Config files not needed in production
+orval.config.ts
+vite.config.ts.timestamp-*
