@@ -23,6 +23,7 @@
             lefthook
             ni
             docker-compose
+            opencode
           ];
 
           shellHook = ''
