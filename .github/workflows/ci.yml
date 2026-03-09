@@ -52,7 +52,7 @@ jobs:
 
       # Test Docker build (amd64 and arm64 only - Node 24 doesn't support arm/v7)
       - name: Test Docker build
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: .
           platforms: linux/amd64,linux/arm64
