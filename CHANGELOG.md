@@ -1,5 +1,11 @@
 # blocky-frontend
 
+## 1.1.1
+
+### Patch Changes
+
+- Update build matrix
+
 ## 1.1.0
 
 ### Minor Changes
