@@ -37,7 +37,7 @@
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
     "lefthook": "^2.1.2",
-    "orval": "^8.4.1",
+    "orval": "^8.5.3",
     "postcss": "^8.5.8",
     "tailwindcss": "^4.2.1",
     "typescript": "^5.9.3",
