@@ -1,5 +1,11 @@
 # blocky-frontend
 
+## 1.1.0
+
+### Minor Changes
+
+- f8db2ac: Security patches etc
+
 ## 1.0.0
 
 ### Major Changes
