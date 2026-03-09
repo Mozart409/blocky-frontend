@@ -1,5 +1,11 @@
 # blocky-frontend
 
+## 1.1.2
+
+### Patch Changes
+
+- More security fixes
+
 ## 1.1.1
 
 ### Patch Changes
