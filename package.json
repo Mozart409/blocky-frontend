@@ -36,7 +36,7 @@
     "autoprefixer": "^10.4.27",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
-    "lefthook": "^2.1.3",
+    "lefthook": "^2.1.4",
     "orval": "^8.5.3",
     "postcss": "^8.5.8",
     "tailwindcss": "^4.2.1",
