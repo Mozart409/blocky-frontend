@@ -21,11 +21,14 @@ COPY . .
 ENV NODE_ENV=production
 RUN pnpm run build
 
-FROM caddy:2.10.2-alpine AS runner
+FROM caddy:2.11.2-alpine AS runner
 
 LABEL org.opencontainers.image.source="https://github.com/Mozart409/blocky-frontend" \
     org.opencontainers.image.url="https://github.com/Mozart409/blocky-frontend" \
     org.opencontainers.image.title="Frontend for Blocky a DNS proxy as ad-blocker"
+
+# Upgrade Alpine packages to patch known vulnerabilities (e.g. zlib CVEs)
+RUN apk upgrade --no-cache
 
 # Create non-root user for security
 RUN adduser -D -u 1000 appuser
