@@ -11,3 +11,7 @@ down: clear
 
 clear:
     clear
+
+trivy: clear
+    docker build -t blocky_frontend:scan .
+    trivy image blocky_frontend:scan

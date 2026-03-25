@@ -32,6 +32,7 @@
             cocogitto
             actionlint
             claude-code
+            trivy
           ];
 
           shellHook = ''
