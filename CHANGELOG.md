@@ -1,5 +1,11 @@
 # blocky-frontend
 
+## 1.2.0
+
+### Minor Changes
+
+- Fix all possible cves
+
 ## 1.1.2
 
 ### Patch Changes
