@@ -32,7 +32,7 @@ importers:
     devDependencies:
       '@changesets/cli':
         specifier: ^2.30.0
-        version: 2.30.0(@types/node@25.5.0)
+        version: 2.30.0(@types/node@25.5.2)
       '@tailwindcss/forms':
         specifier: ^0.5.11
         version: 0.5.11(tailwindcss@4.2.2)
@@ -41,7 +41,7 @@ importers:
         version: 0.5.19(tailwindcss@4.2.2)
       '@tailwindcss/vite':
         specifier: ^4.2.2
-        version: 4.2.2(vite@8.0.5(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)(@types/node@25.5.0)(esbuild@0.27.4)(jiti@2.6.1)(yaml@2.8.3))
+        version: 4.2.2(vite@8.0.5(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)(@types/node@25.5.2)(esbuild@0.27.4)(jiti@2.6.1)(yaml@2.8.3))
       '@tanstack/react-query-devtools':
         specifier: ^5.95.2
         version: 5.95.2(@tanstack/react-query@5.96.1(react@19.2.4))(react@19.2.4)
@@ -49,8 +49,8 @@ importers:
         specifier: ^0.6.1
         version: 0.6.1
       '@types/node':
-        specifier: ^25.5.0
-        version: 25.5.0
+        specifier: ^25.5.2
+        version: 25.5.2
       '@types/react':
         specifier: ^19.2.14
         version: 19.2.14
@@ -59,16 +59,16 @@ importers:
         version: 19.2.3(@types/react@19.2.14)
       '@vitejs/plugin-react':
         specifier: ^6.0.1
-        version: 6.0.1(vite@8.0.5(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)(@types/node@25.5.0)(esbuild@0.27.4)(jiti@2.6.1)(yaml@2.8.3))
+        version: 6.0.1(vite@8.0.5(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)(@types/node@25.5.2)(esbuild@0.27.4)(jiti@2.6.1)(yaml@2.8.3))
       autoprefixer:
         specifier: ^10.4.27
         version: 10.4.27(postcss@8.5.8)
       commitizen:
         specifier: ^4.3.0
-        version: 4.3.1(@types/node@25.5.0)(typescript@6.0.2)
+        version: 4.3.1(@types/node@25.5.2)(typescript@6.0.2)
       cz-conventional-changelog:
         specifier: ^3.3.0
-        version: 3.3.0(@types/node@25.5.0)(typescript@6.0.2)
+        version: 3.3.0(@types/node@25.5.2)(typescript@6.0.2)
       lefthook:
         specifier: ^2.1.4
         version: 2.1.4
@@ -86,7 +86,7 @@ importers:
         version: 6.0.2
       vite:
         specifier: ^8.0.5
-        version: 8.0.5(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)(@types/node@25.5.0)(esbuild@0.27.4)(jiti@2.6.1)(yaml@2.8.3)
+        version: 8.0.5(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)(@types/node@25.5.2)(esbuild@0.27.4)(jiti@2.6.1)(yaml@2.8.3)
 
 packages:
 
@@ -723,8 +723,8 @@ packages:
   '@types/node@12.20.55':
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
 
-  '@types/node@25.5.0':
-    resolution: {integrity: sha512-jp2P3tQMSxWugkCUKLRPVUpGaL5MVFwF8RDuSRztfwgN1wmqJeMSbKlnEtQqU8UrhTmzEmZdu2I6v2dpp7XIxw==}
+  '@types/node@25.5.2':
+    resolution: {integrity: sha512-tO4ZIRKNC+MDWV4qKVZe3Ql/woTnmHDr5JD8UI5hn2pwBrHEwOEMZK7WlNb5RKB6EoJ02gwmQS9OrjuFnZYdpg==}
 
   '@types/react-dom@19.2.3':
     resolution: {integrity: sha512-jp2L/eY6fn+KgVVQAOqYItbF0VY/YApe5Mz2F0aykSO8gx31bYCZyvSeYxCHKvzHG5eZjc+zyaS5BrBWya2+kQ==}
@@ -2205,7 +2205,7 @@ snapshots:
     dependencies:
       '@changesets/types': 6.1.0
 
-  '@changesets/cli@2.30.0(@types/node@25.5.0)':
+  '@changesets/cli@2.30.0(@types/node@25.5.2)':
     dependencies:
       '@changesets/apply-release-plan': 7.1.0
       '@changesets/assemble-release-plan': 6.0.9
@@ -2221,7 +2221,7 @@ snapshots:
       '@changesets/should-skip-package': 0.1.2
       '@changesets/types': 6.1.0
       '@changesets/write': 0.4.0
-      '@inquirer/external-editor': 1.0.3(@types/node@25.5.0)
+      '@inquirer/external-editor': 1.0.3(@types/node@25.5.2)
       '@manypkg/get-packages': 1.1.3
       ansi-colors: 4.1.3
       enquirer: 2.4.1
@@ -2332,7 +2332,7 @@ snapshots:
   '@commitlint/execute-rule@19.8.0':
     optional: true
 
-  '@commitlint/load@19.8.0(@types/node@25.5.0)(typescript@6.0.2)':
+  '@commitlint/load@19.8.0(@types/node@25.5.2)(typescript@6.0.2)':
     dependencies:
       '@commitlint/config-validator': 19.8.0
       '@commitlint/execute-rule': 19.8.0
@@ -2340,7 +2340,7 @@ snapshots:
       '@commitlint/types': 19.8.0
       chalk: 5.6.2
       cosmiconfig: 9.0.0(typescript@6.0.2)
-      cosmiconfig-typescript-loader: 6.1.0(@types/node@25.5.0)(cosmiconfig@9.0.0(typescript@6.0.2))(typescript@6.0.2)
+      cosmiconfig-typescript-loader: 6.1.0(@types/node@25.5.2)(cosmiconfig@9.0.0(typescript@6.0.2))(typescript@6.0.2)
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       lodash.uniq: 4.5.0
@@ -2467,12 +2467,12 @@ snapshots:
       '@shikijs/types': 3.23.0
       '@shikijs/vscode-textmate': 10.0.2
 
-  '@inquirer/external-editor@1.0.3(@types/node@25.5.0)':
+  '@inquirer/external-editor@1.0.3(@types/node@25.5.2)':
     dependencies:
       chardet: 2.1.1
       iconv-lite: 0.7.2
     optionalDependencies:
-      '@types/node': 25.5.0
+      '@types/node': 25.5.2
 
   '@jridgewell/gen-mapping@0.3.13':
     dependencies:
@@ -2821,12 +2821,12 @@ snapshots:
       postcss-selector-parser: 6.0.10
       tailwindcss: 4.2.2
 
-  '@tailwindcss/vite@4.2.2(vite@8.0.5(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)(@types/node@25.5.0)(esbuild@0.27.4)(jiti@2.6.1)(yaml@2.8.3))':
+  '@tailwindcss/vite@4.2.2(vite@8.0.5(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)(@types/node@25.5.2)(esbuild@0.27.4)(jiti@2.6.1)(yaml@2.8.3))':
     dependencies:
       '@tailwindcss/node': 4.2.2
       '@tailwindcss/oxide': 4.2.2
       tailwindcss: 4.2.2
-      vite: 8.0.5(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)(@types/node@25.5.0)(esbuild@0.27.4)(jiti@2.6.1)(yaml@2.8.3)
+      vite: 8.0.5(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)(@types/node@25.5.2)(esbuild@0.27.4)(jiti@2.6.1)(yaml@2.8.3)
 
   '@tanstack/query-core@5.96.1': {}
 
@@ -2852,7 +2852,7 @@ snapshots:
 
   '@types/conventional-commits-parser@5.0.1':
     dependencies:
-      '@types/node': 25.5.0
+      '@types/node': 25.5.2
     optional: true
 
   '@types/hast@3.0.4':
@@ -2861,7 +2861,7 @@ snapshots:
 
   '@types/node@12.20.55': {}
 
-  '@types/node@25.5.0':
+  '@types/node@25.5.2':
     dependencies:
       undici-types: 7.18.2
 
@@ -2875,10 +2875,10 @@ snapshots:
 
   '@types/unist@3.0.3': {}
 
-  '@vitejs/plugin-react@6.0.1(vite@8.0.5(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)(@types/node@25.5.0)(esbuild@0.27.4)(jiti@2.6.1)(yaml@2.8.3))':
+  '@vitejs/plugin-react@6.0.1(vite@8.0.5(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)(@types/node@25.5.2)(esbuild@0.27.4)(jiti@2.6.1)(yaml@2.8.3))':
     dependencies:
       '@rolldown/pluginutils': 1.0.0-rc.7
-      vite: 8.0.5(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)(@types/node@25.5.0)(esbuild@0.27.4)(jiti@2.6.1)(yaml@2.8.3)
+      vite: 8.0.5(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)(@types/node@25.5.2)(esbuild@0.27.4)(jiti@2.6.1)(yaml@2.8.3)
 
   acorn@8.16.0: {}
 
@@ -3048,10 +3048,10 @@ snapshots:
 
   commander@14.0.3: {}
 
-  commitizen@4.3.1(@types/node@25.5.0)(typescript@6.0.2):
+  commitizen@4.3.1(@types/node@25.5.2)(typescript@6.0.2):
     dependencies:
       cachedir: 2.3.0
-      cz-conventional-changelog: 3.3.0(@types/node@25.5.0)(typescript@6.0.2)
+      cz-conventional-changelog: 3.3.0(@types/node@25.5.2)(typescript@6.0.2)
       dedent: 0.7.0
       detect-indent: 6.1.0
       find-node-modules: 2.1.3
@@ -3074,9 +3074,9 @@ snapshots:
 
   conventional-commit-types@3.0.0: {}
 
-  cosmiconfig-typescript-loader@6.1.0(@types/node@25.5.0)(cosmiconfig@9.0.0(typescript@6.0.2))(typescript@6.0.2):
+  cosmiconfig-typescript-loader@6.1.0(@types/node@25.5.2)(cosmiconfig@9.0.0(typescript@6.0.2))(typescript@6.0.2):
     dependencies:
-      '@types/node': 25.5.0
+      '@types/node': 25.5.2
       cosmiconfig: 9.0.0(typescript@6.0.2)
       jiti: 2.6.1
       typescript: 6.0.2
@@ -3102,16 +3102,16 @@ snapshots:
 
   csstype@3.2.3: {}
 
-  cz-conventional-changelog@3.3.0(@types/node@25.5.0)(typescript@6.0.2):
+  cz-conventional-changelog@3.3.0(@types/node@25.5.2)(typescript@6.0.2):
     dependencies:
       chalk: 2.4.2
-      commitizen: 4.3.1(@types/node@25.5.0)(typescript@6.0.2)
+      commitizen: 4.3.1(@types/node@25.5.2)(typescript@6.0.2)
       conventional-commit-types: 3.0.0
       lodash.map: 4.6.0
       longest: 2.0.1
       word-wrap: 1.2.5
     optionalDependencies:
-      '@commitlint/load': 19.8.0(@types/node@25.5.0)(typescript@6.0.2)
+      '@commitlint/load': 19.8.0(@types/node@25.5.2)(typescript@6.0.2)
     transitivePeerDependencies:
       - '@types/node'
       - typescript
@@ -4150,7 +4150,7 @@ snapshots:
 
   util-deprecate@1.0.2: {}
 
-  vite@8.0.5(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)(@types/node@25.5.0)(esbuild@0.27.4)(jiti@2.6.1)(yaml@2.8.3):
+  vite@8.0.5(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)(@types/node@25.5.2)(esbuild@0.27.4)(jiti@2.6.1)(yaml@2.8.3):
     dependencies:
       lightningcss: 1.32.0
       picomatch: 4.0.4
@@ -4158,7 +4158,7 @@ snapshots:
       rolldown: 1.0.0-rc.12(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)
       tinyglobby: 0.2.15
     optionalDependencies:
-      '@types/node': 25.5.0
+      '@types/node': 25.5.2
       esbuild: 0.27.4
       fsevents: 2.3.3
       jiti: 2.6.1
