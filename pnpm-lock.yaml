@@ -10,25 +10,25 @@ importers:
     dependencies:
       '@tanstack/react-query':
         specifier: ^5.96.1
-        version: 5.96.1(react@19.2.4)
+        version: 5.96.1(react@19.2.5)
       axios:
         specifier: ^1.14.0
         version: 1.14.0
       react:
-        specifier: ^19.2.4
-        version: 19.2.4
+        specifier: ^19.2.5
+        version: 19.2.5
       react-dom:
         specifier: ^19.2.4
-        version: 19.2.4(react@19.2.4)
+        version: 19.2.4(react@19.2.5)
       react-error-boundary:
         specifier: ^6.1.1
-        version: 6.1.1(react@19.2.4)
+        version: 6.1.1(react@19.2.5)
       react-hot-toast:
         specifier: ^2.6.0
-        version: 2.6.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        version: 2.6.0(react-dom@19.2.4(react@19.2.5))(react@19.2.5)
       usehooks-ts:
         specifier: ^3.1.0
-        version: 3.1.1(react@19.2.4)
+        version: 3.1.1(react@19.2.5)
     devDependencies:
       '@changesets/cli':
         specifier: ^2.30.0
@@ -44,7 +44,7 @@ importers:
         version: 4.2.2(vite@8.0.5(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)(@types/node@25.5.0)(esbuild@0.27.4)(jiti@2.6.1)(yaml@2.8.3))
       '@tanstack/react-query-devtools':
         specifier: ^5.95.2
-        version: 5.95.2(@tanstack/react-query@5.96.1(react@19.2.4))(react@19.2.4)
+        version: 5.95.2(@tanstack/react-query@5.96.1(react@19.2.5))(react@19.2.5)
       '@total-typescript/ts-reset':
         specifier: ^0.6.1
         version: 0.6.1
@@ -1832,8 +1832,8 @@ packages:
       react: '>=16'
       react-dom: '>=16'
 
-  react@19.2.4:
-    resolution: {integrity: sha512-9nfp2hYpCwOjAN+8TZFGhtWEwgvWHXqESH8qT89AT/lWklpLON22Lc8pEtnpsZz7VmawabSU0gCjnj8aC0euHQ==}
+  react@19.2.5:
+    resolution: {integrity: sha512-llUJLzz1zTUBrskt2pwZgLq59AemifIftw4aB7JxOqf1HY2FDaGDxgwpAPVzHU1kdWabH7FauP4i1oEeer2WCA==}
     engines: {node: '>=0.10.0'}
 
   read-yaml-file@1.1.0:
@@ -2832,16 +2832,16 @@ snapshots:
 
   '@tanstack/query-devtools@5.95.2': {}
 
-  '@tanstack/react-query-devtools@5.95.2(@tanstack/react-query@5.96.1(react@19.2.4))(react@19.2.4)':
+  '@tanstack/react-query-devtools@5.95.2(@tanstack/react-query@5.96.1(react@19.2.5))(react@19.2.5)':
     dependencies:
       '@tanstack/query-devtools': 5.95.2
-      '@tanstack/react-query': 5.96.1(react@19.2.4)
-      react: 19.2.4
+      '@tanstack/react-query': 5.96.1(react@19.2.5)
+      react: 19.2.5
 
-  '@tanstack/react-query@5.96.1(react@19.2.4)':
+  '@tanstack/react-query@5.96.1(react@19.2.5)':
     dependencies:
       '@tanstack/query-core': 5.96.1
-      react: 19.2.4
+      react: 19.2.5
 
   '@total-typescript/ts-reset@0.6.1': {}
 
@@ -3926,23 +3926,23 @@ snapshots:
 
   queue-microtask@1.2.3: {}
 
-  react-dom@19.2.4(react@19.2.4):
+  react-dom@19.2.4(react@19.2.5):
     dependencies:
-      react: 19.2.4
+      react: 19.2.5
       scheduler: 0.27.0
 
-  react-error-boundary@6.1.1(react@19.2.4):
+  react-error-boundary@6.1.1(react@19.2.5):
     dependencies:
-      react: 19.2.4
+      react: 19.2.5
 
-  react-hot-toast@2.6.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4):
+  react-hot-toast@2.6.0(react-dom@19.2.4(react@19.2.5))(react@19.2.5):
     dependencies:
       csstype: 3.2.3
       goober: 2.1.18(csstype@3.2.3)
-      react: 19.2.4
-      react-dom: 19.2.4(react@19.2.4)
+      react: 19.2.5
+      react-dom: 19.2.4(react@19.2.5)
 
-  react@19.2.4: {}
+  react@19.2.5: {}
 
   read-yaml-file@1.1.0:
     dependencies:
@@ -4143,10 +4143,10 @@ snapshots:
       escalade: 3.2.0
       picocolors: 1.1.1
 
-  usehooks-ts@3.1.1(react@19.2.4):
+  usehooks-ts@3.1.1(react@19.2.5):
     dependencies:
       lodash.debounce: 4.0.8
-      react: 19.2.4
+      react: 19.2.5
 
   util-deprecate@1.0.2: {}
 
