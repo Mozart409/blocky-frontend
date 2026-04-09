@@ -38,7 +38,7 @@
     "cz-conventional-changelog": "^3.3.0",
     "lefthook": "^2.1.4",
     "orval": "^8.6.2",
-    "postcss": "^8.5.8",
+    "postcss": "^8.5.9",
     "tailwindcss": "^4.2.2",
     "typescript": "^6.0.2",
     "vite": "^8.0.5"
