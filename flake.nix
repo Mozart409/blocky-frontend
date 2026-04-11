@@ -33,6 +33,7 @@
             actionlint
             claude-code
             trivy
+            git
           ];
 
           shellHook = ''
