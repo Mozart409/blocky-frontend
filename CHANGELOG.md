@@ -1,5 +1,11 @@
 # blocky-frontend
 
+## 1.2.1
+
+### Patch Changes
+
+- Upgrade pkgs
+
 ## 1.2.0
 
 ### Minor Changes
