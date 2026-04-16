@@ -35,7 +35,7 @@
     "@vitejs/plugin-react": "^6.0.1",
     "autoprefixer": "^10.4.27",
     "lefthook": "^2.1.5",
-    "orval": "^8.7.0",
+    "orval": "^8.8.0",
     "postcss": "^8.5.9",
     "tailwindcss": "^4.2.2",
     "typescript": "^6.0.2",
