@@ -37,7 +37,7 @@
     "lefthook": "^2.1.5",
     "orval": "^8.7.0",
     "postcss": "^8.5.9",
-    "tailwindcss": "^4.2.2",
+    "tailwindcss": "^4.2.4",
     "typescript": "^6.0.2",
     "vite": "^8.0.8"
   },
