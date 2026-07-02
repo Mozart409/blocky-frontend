@@ -35,10 +35,10 @@ importers:
         version: 2.31.0(@types/node@26.1.0)
       '@tailwindcss/forms':
         specifier: ^0.5.11
-        version: 0.5.11(tailwindcss@4.2.4)
+        version: 0.5.11(tailwindcss@4.3.2)
       '@tailwindcss/typography':
         specifier: ^0.5.19
-        version: 0.5.19(tailwindcss@4.2.4)
+        version: 0.5.19(tailwindcss@4.3.2)
       '@tailwindcss/vite':
         specifier: ^4.3.2
         version: 4.3.2(vite@8.0.16(@types/node@26.1.0)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3))
@@ -73,8 +73,8 @@ importers:
         specifier: ^8.5.16
         version: 8.5.16
       tailwindcss:
-        specifier: ^4.2.4
-        version: 4.2.4
+        specifier: ^4.3.2
+        version: 4.3.2
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -1572,9 +1572,6 @@ packages:
     resolution: {integrity: sha512-aulFJcD6YK8V1G7iRB5tigAP4TsHBZZrOV8pjV++zdUwmeV8uzbY7yn6h9MswN62adStNZFuCIx4haBnRuMDaw==}
     engines: {node: '>=18'}
 
-  tailwindcss@4.2.4:
-    resolution: {integrity: sha512-HhKppgO81FQof5m6TEnuBWCZGgfRAWbaeOaGT00KOy/Pf/j6oUihdvBpA7ltCeAvZpFhW3j0PTclkxsd4IXYDA==}
-
   tailwindcss@4.3.2:
     resolution: {integrity: sha512-WtctNNSH8A9jlMIqxzuYumOHU5uGZyRv0Q5svQl+oEPy5w84YpBxdb7MdqyiSPQge5jTJ6zFQLq0PFygdccSBA==}
 
@@ -2267,10 +2264,10 @@ snapshots:
 
   '@sindresorhus/merge-streams@4.0.0': {}
 
-  '@tailwindcss/forms@0.5.11(tailwindcss@4.2.4)':
+  '@tailwindcss/forms@0.5.11(tailwindcss@4.3.2)':
     dependencies:
       mini-svg-data-uri: 1.4.4
-      tailwindcss: 4.2.4
+      tailwindcss: 4.3.2
 
   '@tailwindcss/node@4.3.2':
     dependencies:
@@ -2333,10 +2330,10 @@ snapshots:
       '@tailwindcss/oxide-win32-arm64-msvc': 4.3.2
       '@tailwindcss/oxide-win32-x64-msvc': 4.3.2
 
-  '@tailwindcss/typography@0.5.19(tailwindcss@4.2.4)':
+  '@tailwindcss/typography@0.5.19(tailwindcss@4.3.2)':
     dependencies:
       postcss-selector-parser: 6.0.10
-      tailwindcss: 4.2.4
+      tailwindcss: 4.3.2
 
   '@tailwindcss/vite@4.3.2(vite@8.0.16(@types/node@26.1.0)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3))':
     dependencies:
@@ -3180,8 +3177,6 @@ snapshots:
   strip-bom@3.0.0: {}
 
   strip-final-newline@4.0.0: {}
-
-  tailwindcss@4.2.4: {}
 
   tailwindcss@4.3.2: {}
 
