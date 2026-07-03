@@ -4,16 +4,22 @@ A frontend for the [blocky](https://github.com/0xERR0R/blocky) dns blocker.
 
 ## Screenshots
 
-![Lightmode](./docs/lightmode.png)
+### Desktop
 
-![Darkmode](./docs/darkmode.png)
+![Blocky Frontend — desktop](./docs/blocky-v2-desktop.png)
+
+### Mobile
+
+![Blocky Frontend — mobile](./docs/blocky-v2-mobile.png)
 
 ## Features
 
-- Responsive Design
-- Enable / Disable Blocking
-- DNS Queries
+- Responsive Design (desktop & mobile)
+- Enable / Disable Blocking, with timed pause (5m / 30m / 1h)
+- DNS Query tool
+- DNS Statistics dashboard (queries, blocked, cache hit rate, top domains/clients, per-hour chart)
 - Refresh Blocklists
+- Flush DNS Cache
 
 ## Run Locally
 
