@@ -6,7 +6,7 @@
     "api:generate": "orval",
     "dev": "vite --host",
     "build": "tsc && vite build",
-    "bump": "cog bump --auto",
+    "bump": "cog bump --auto --annotated \"v{{version}}\"",
     "start": "vite preview",
     "image": "podman build --platform linux/arm64,linux/amd64 -t mozart409/blocky-frontend:latest .",
     "image-amd": "podman build --platform linux/amd64 -t mozart409/blocky-frontend:latest ."
