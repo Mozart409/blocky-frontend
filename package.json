@@ -9,8 +9,8 @@
     "change": "pnpm changeset",
     "release": "pnpm changeset version",
     "start": "vite preview",
-    "image": "docker buildx build --platform linux/arm64,linux/amd64 -t mozart409/blocky-frontend:latest .",
-    "image-amd": "docker buildx build --platform linux/amd64 -t mozart409/blocky-frontend:latest .",
+    "image": "podman build --platform linux/arm64,linux/amd64 -t mozart409/blocky-frontend:latest .",
+    "image-amd": "podman build --platform linux/amd64 -t mozart409/blocky-frontend:latest .",
     "commit": "cz"
   },
   "dependencies": {

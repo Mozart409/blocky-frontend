@@ -23,10 +23,10 @@
           buildInputs = with pkgs; [
             nodejs_24
             pnpm
-            docker
+            podman
             lefthook
             ni
-            docker-compose
+            podman-compose
             opencode
             cocogitto
             actionlint
