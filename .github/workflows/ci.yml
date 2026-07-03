@@ -36,6 +36,24 @@ jobs:
       - name: Type check and build
         run: pnpm run build
 
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          # Full history so gitleaks can scan all commits, not just HEAD.
+          fetch-depth: 0
+
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+
+      - name: Biome (format, lint, import sorting)
+        run: nix develop -c biome ci .
+
+      - name: Secret scan (gitleaks)
+        run: nix develop -c gitleaks git --redact=100
+
   docker-build-test:
     runs-on: ubuntu-latest
     strategy:
