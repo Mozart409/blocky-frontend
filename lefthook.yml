@@ -6,6 +6,15 @@ pre-commit:
     just-fmt:
       run: just --fmt
       stage_fixed: true
+    keep-sorted:
+      run: keep-sorted {staged_files}
+      stage_fixed: true
+
+commit-msg:
+  commands:
+    cocogitto:
+      run: cog verify --file {1}
+
 pre-push:
   commands:
     image:

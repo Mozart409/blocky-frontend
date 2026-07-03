@@ -4,8 +4,10 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   plugins: [
+    // keep-sorted start
+    react(),
     tailwindcss(),
-    react()
+    // keep-sorted end
   ],
   server: {
     proxy: {
