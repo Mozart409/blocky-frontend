@@ -30,10 +30,41 @@ pnpm dev                 # Start dev server (auto-runs docker compose up -d)
 
 **No test framework is configured.** The build command (`tsc && vite build`) serves as the primary validation.
 
+### Tooling comes from the Nix flake
+
+All dev/CI tooling (Node, pnpm, Biome, gitleaks, lefthook, cocogitto,
+keep-sorted, actionlint, trivy, podman) is provided by `flake.nix` — **not**
+npm devDependencies. Always work inside `nix develop` (or direnv) so these
+binaries are on `PATH`. The flake `shellHook` runs `lefthook install`.
+
+| Tool | Command | Purpose |
+|------|---------|---------|
+| Biome | `biome check --write .` | Format + lint + import sorting (config: `biome.json`) |
+| gitleaks | `gitleaks git --staged` | Secret scanning |
+| keep-sorted | `keep-sorted <file>` | Sort marked blocks |
+| cocogitto | `cog verify --file <msg>` | Conventional Commit validation |
+
+> Biome ignores the Orval-generated `src/api/**` (see `biome.json` `files.includes`).
+
 ### Git Hooks (Lefthook)
 
-- **pre-commit**: Runs `pnpm run build`
-- **pre-push**: Runs `pnpm run image-amd`
+- **pre-commit** (parallel): `biome check --write` (lint/format, `stage_fixed`),
+  `keep-sorted` (`stage_fixed`), `just --fmt` (`stage_fixed`),
+  `gitleaks git --staged` (secret scan), and `pnpm run build`
+- **commit-msg**: `cog verify` (cocogitto) enforces Conventional Commits
+- **pre-push**: `pnpm run image-amd` and `actionlint`
+
+`keep-sorted` alphabetizes any block delimited by start/end marker comments.
+Wrap a growing list (deps, ignore rules, plugin arrays) to keep it sorted:
+
+```nix
+buildInputs = with pkgs; [
+  # keep-sorted start
+  actionlint
+  biome
+  # keep-sorted end
+];
+```
 
 ## Code Style Guidelines
 
@@ -45,6 +76,9 @@ pnpm dev                 # Start dev server (auto-runs docker compose up -d)
 - **Path aliases defined** in tsconfig but rarely used in practice
 
 ### Import Organization
+
+> Import sorting is enforced automatically by Biome (`assist.actions.source.organizeImports`).
+> Run `biome check --write` — don't hand-order imports; the grouping below is illustrative.
 
 Order imports as follows:
 ```typescript
