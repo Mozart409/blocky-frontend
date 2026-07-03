@@ -1,10 +1,10 @@
 services:
   blocky:
     container_name: blocky
-    image: ghcr.io/0xerr0r/blocky:v0.28.2
+    image: ghcr.io/0xerr0r/blocky:v0.33.0
     ports:
-      - '54:53/tcp'
-      - '54:53/udp'
+      - '5354:53/tcp'
+      - '5354:53/udp'
       - '4000:4000/tcp'
     environment:
       - TZ=Europe/Berlin # Optional to synchronize the log timestamp with host
