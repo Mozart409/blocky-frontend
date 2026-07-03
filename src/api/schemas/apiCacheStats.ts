@@ -8,9 +8,10 @@ For features, configuration, and installation see the [project documentation](ht
  * OpenAPI spec version: 1.0
  */
 
-export interface ApiQueryRequest {
-  /** query for DNS request */
-  query: string;
-  /** request type (A, AAAA, ...) */
-  type: string;
+/**
+ * Current cache state (point-in-time, not windowed).
+ */
+export interface ApiCacheStats {
+  /** Current number of entries in the result cache. */
+  entries: number;
 }

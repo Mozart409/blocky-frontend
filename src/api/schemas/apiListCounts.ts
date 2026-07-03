@@ -7,10 +7,13 @@
 For features, configuration, and installation see the [project documentation](https://0xerr0r.github.io/blocky/) and the [README](https://github.com/0xERR0R/blocky/blob/main/README.md).
  * OpenAPI spec version: 1.0
  */
+import type { ApiListCountsAllowlist } from './apiListCountsAllowlist';
+import type { ApiListCountsDenylist } from './apiListCountsDenylist';
 
-export interface ApiQueryRequest {
-  /** query for DNS request */
-  query: string;
-  /** request type (A, AAAA, ...) */
-  type: string;
+/**
+ * Current per-group list entry counts (point-in-time, not windowed).
+ */
+export interface ApiListCounts {
+  denylist: ApiListCountsDenylist;
+  allowlist: ApiListCountsAllowlist;
 }

@@ -2,7 +2,7 @@ import { FC, useState } from 'react'
 import { useMutation } from '@tanstack/react-query'
 import toast from 'react-hot-toast'
 
-import { query } from '../api/endpoints/query/query'
+import { dnsQuery } from '../api/endpoints/query/query'
 
 const queryTypes = ['A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA', 'TXT']
 
@@ -83,7 +83,7 @@ export const DNSQuery: FC = () => {
   const [validationError, setValidationError] = useState<string | null>(null)
 
   const dnsQueryMutation = useMutation({
-    mutationFn: (data: { query: string; type: string }) => query(data),
+    mutationFn: (data: { query: string; type: string }) => dnsQuery(data),
     onSuccess: (res) => {
       toast.success(`Query is ${res.data.responseType}`)
     },

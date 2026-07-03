@@ -8,9 +8,18 @@ For features, configuration, and installation see the [project documentation](ht
  * OpenAPI spec version: 1.0
  */
 
-export interface ApiQueryRequest {
-  /** query for DNS request */
-  query: string;
-  /** request type (A, AAAA, ...) */
-  type: string;
+/**
+ * Curated outcome categories over the window (server computes the mapping).
+ */
+export interface ApiStatsSummary {
+  /** Total queries received in the window. */
+  queries: number;
+  cached: number;
+  forwarded: number;
+  blocked: number;
+  local: number;
+  dropped: number;
+  errors: number;
+  avgResponseMs: number;
+  cacheHitRate: number;
 }

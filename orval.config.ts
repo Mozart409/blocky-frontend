@@ -11,6 +11,10 @@ export default defineConfig({
       httpClient: "axios",
       baseUrl: "/api",
       override: {
+        // The `query` operation would otherwise generate a hook named `useQuery`,
+        // colliding with react-query's own `useQuery`. Rename it to `dnsQuery`.
+        operationName: (operation, _route, _verb) =>
+          operation.operationId === "query" ? "dnsQuery" : operation.operationId,
         operations: {
           query: {
             mutator: undefined,

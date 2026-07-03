@@ -8,9 +8,7 @@ For features, configuration, and installation see the [project documentation](ht
  * OpenAPI spec version: 1.0
  */
 
-export interface ApiQueryRequest {
-  /** query for DNS request */
-  query: string;
-  /** request type (A, AAAA, ...) */
-  type: string;
-}
+/**
+ * Raw per-RType counts over the window (CACHED, BLOCKED, ...).
+ */
+export type ApiStatsByResponseType = {[key: string]: number};
