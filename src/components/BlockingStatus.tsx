@@ -1,11 +1,11 @@
-import { FC } from 'react'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
+import type { FC } from 'react'
 
 import {
-  useBlockingStatus,
-  enableBlocking,
   disableBlocking,
-  getBlockingStatusQueryKey
+  enableBlocking,
+  getBlockingStatusQueryKey,
+  useBlockingStatus,
 } from '../api/endpoints/blocking/blocking'
 
 // Quick-disable durations. `undefined` means disable indefinitely (blocky default).
@@ -13,13 +13,13 @@ const DISABLE_DURATIONS: { label: string; duration?: string }[] = [
   { label: 'Disable', duration: undefined },
   { label: '5m', duration: '5m' },
   { label: '30m', duration: '30m' },
-  { label: '1h', duration: '1h' }
+  { label: '1h', duration: '1h' },
 ]
 
 export const BlockingStatus: FC = () => {
   // Poll so the banner reflects auto re-enable after a timed disable expires.
   const { status, data, error } = useBlockingStatus({
-    query: { refetchInterval: 5000 }
+    query: { refetchInterval: 5000 },
   })
 
   if (data === undefined) {
@@ -79,7 +79,7 @@ function formatCountdown(totalSec: number): string {
 
 export function Banner({
   enabled,
-  autoEnableInSec
+  autoEnableInSec,
 }: {
   enabled: boolean
   autoEnableInSec?: number
@@ -91,13 +91,13 @@ export function Banner({
 
   const mutationEnable = useMutation({
     mutationFn: () => enableBlocking(),
-    onSuccess: invalidateStatus
+    onSuccess: invalidateStatus,
   })
 
   const mutationDisable = useMutation({
     mutationFn: (duration?: string) =>
       disableBlocking(duration ? { duration } : undefined),
-    onSuccess: invalidateStatus
+    onSuccess: invalidateStatus,
   })
 
   if (enabled === true) {

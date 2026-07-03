@@ -1,5 +1,5 @@
-import { FC } from 'react'
 import { useMutation } from '@tanstack/react-query'
+import type { FC } from 'react'
 import toast from 'react-hot-toast'
 
 import { listRefresh } from '../api/endpoints/lists/lists'
@@ -12,7 +12,7 @@ export const RefreshList: FC = () => {
     },
     onError: () => {
       toast.error('Error! Refreshing the list failed.')
-    }
+    },
   })
 
   return (

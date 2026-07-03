@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react'
+import type { FC, ReactNode } from 'react'
 
 import { useGetStats } from '../api/endpoints/stats/stats'
 import type { ApiNameCount } from '../api/schemas'
@@ -13,7 +13,7 @@ const card =
 
 export const StatsDashboard: FC = () => {
   const { data, error, isLoading } = useGetStats({
-    query: { refetchInterval: 30_000, retry: false }
+    query: { refetchInterval: 30_000, retry: false },
   })
 
   if (isLoading) {
@@ -123,7 +123,7 @@ function Stat({
   label,
   value,
   sub,
-  accent
+  accent,
 }: {
   label: string
   value: string
@@ -159,7 +159,7 @@ function Legend({ className, label }: { className: string; label: string }) {
 }
 
 function HourChart({
-  points
+  points,
 }: {
   points: { hour: string; queries: number; blocked: number }[]
 }) {
@@ -178,7 +178,7 @@ function HourChart({
           key={p.hour}
           className="relative h-full min-w-[0.5rem] max-w-[2.5rem] flex-1 rounded-t bg-slate-100 dark:bg-slate-700/40"
           title={`${new Date(p.hour).toLocaleTimeString([], {
-            hour: '2-digit'
+            hour: '2-digit',
           })} — ${fmt(p.queries)} queries, ${fmt(p.blocked)} blocked`}
         >
           <div
@@ -197,7 +197,7 @@ function HourChart({
 
 function BarCard({
   title,
-  data
+  data,
 }: {
   title: string
   data: { [key: string]: number }
@@ -246,7 +246,7 @@ function TopList({ title, rows }: { title: string; rows: ApiNameCount[] }) {
 function BarRow({
   name,
   value,
-  max
+  max,
 }: {
   name: string
   value: number

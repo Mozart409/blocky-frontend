@@ -9,6 +9,11 @@
     "ignoreUnknown": true,
     "includes": ["**", "!src/api", "!dist", "!dist-ssr"]
   },
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
+  },
   "formatter": {
     "enabled": true,
     "indentStyle": "space",

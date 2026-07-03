@@ -1,5 +1,5 @@
+import { type FC, useEffect } from 'react'
 import { useDarkMode } from 'usehooks-ts'
-import { FC, useEffect } from 'react'
 
 export const ThemeToggle: FC = () => {
   const { isDarkMode, toggle, enable, disable } = useDarkMode()
@@ -21,7 +21,11 @@ export const ThemeToggle: FC = () => {
           <div className="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
             <div className="pr-16 sm:text-center sm:px-16">
               <p className="font-medium text-white">
-                <button onClick={toggle}>
+                <button
+                  type="button"
+                  onClick={toggle}
+                  aria-label={`Switch to ${isDarkMode ? 'light' : 'dark'} mode`}
+                >
                   <span className="text-slate-900 dark:text-slate-50">
                     {isDarkMode ? (
                       <svg
@@ -29,6 +33,7 @@ export const ThemeToggle: FC = () => {
                         className="h-5 w-5"
                         viewBox="0 0 20 20"
                         fill="currentColor"
+                        aria-hidden="true"
                       >
                         <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
                       </svg>
@@ -38,6 +43,7 @@ export const ThemeToggle: FC = () => {
                         className="h-5 w-5"
                         viewBox="0 0 20 20"
                         fill="currentColor"
+                        aria-hidden="true"
                       >
                         <path
                           fillRule="evenodd"

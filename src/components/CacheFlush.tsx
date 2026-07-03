@@ -1,5 +1,5 @@
-import { FC } from 'react'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
+import type { FC } from 'react'
 import toast from 'react-hot-toast'
 
 import { cacheFlush } from '../api/endpoints/cache/cache'
@@ -17,7 +17,7 @@ export const CacheFlush: FC = () => {
     },
     onError: () => {
       toast.error('Error! Flushing the DNS cache failed.')
-    }
+    },
   })
 
   return (

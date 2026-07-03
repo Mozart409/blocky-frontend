@@ -1,10 +1,10 @@
+import { ErrorBoundary, type FallbackProps } from 'react-error-boundary'
 import { BlockingStatus } from './components/BlockingStatus'
-import { RefreshList } from './components/RefreshList'
 import { CacheFlush } from './components/CacheFlush'
 import { DNSQuery } from './components/DNSQuery'
+import { RefreshList } from './components/RefreshList'
 import { StatsDashboard } from './components/StatsDashboard'
 import { ThemeToggle } from './components/ThemeToggle'
-import { FallbackProps, ErrorBoundary } from 'react-error-boundary'
 import '@total-typescript/ts-reset'
 
 function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
@@ -14,7 +14,9 @@ function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
       <div role="alert">
         <p>Something went wrong:</p>
         <pre>{errorMessage}</pre>
-        <button onClick={resetErrorBoundary}>Try again</button>
+        <button type="button" onClick={resetErrorBoundary}>
+          Try again
+        </button>
       </div>
     </>
   )
