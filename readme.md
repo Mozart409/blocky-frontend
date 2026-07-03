@@ -2,6 +2,8 @@
 
 A frontend for the [blocky](https://github.com/0xERR0R/blocky) dns blocker.
 
+Compatible with [blocky](https://github.com/0xERR0R/blocky) `v0.33.0`.
+
 ## Screenshots
 
 ### Desktop
