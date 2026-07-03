@@ -1,0 +1,21 @@
+# Cocogitto configuration — https://docs.cocogitto.io
+#
+# `cog verify` validates commit messages (wired via the lefthook commit-msg hook).
+# `cog bump` (see `pnpm bump`) computes the next SemVer version from the
+# conventional-commit history, updates the changelog, and creates a git tag.
+
+# Existing tags (and the Docker publish workflow's `v*.*.*` trigger) use a
+# `v` prefix, so cocogitto must read/write tags the same way.
+tag_prefix = "v"
+
+# Keep package.json's "version" in sync with the git tag.
+# pre-bump hooks run *before* the version commit is created, so the edited
+# package.json is included in that commit (and thus the tag).
+pre_bump_hooks = [
+  "pnpm version {{version}} --no-git-tag-version --allow-same-version",
+]
+
+post_bump_hooks = []
+
+[changelog]
+path = "CHANGELOG.md"

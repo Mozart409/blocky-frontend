@@ -25,8 +25,7 @@ pnpm dev                 # Start dev server (auto-runs docker compose up -d)
 | `pnpm start` | Preview production build |
 | `pnpm api:generate` | Generate API client from OpenAPI spec (requires blocky running) |
 | `pnpm up` / `pnpm down` | Start/stop Docker Compose services |
-| `pnpm change` | Create changeset for versioning |
-| `pnpm bump` | cocogitto release (`cog bump --auto`): changelog + git tag from conventional commits |
+| `pnpm bump` | cocogitto release (`cog bump --auto`): bumps `package.json`, changelog + git tag from conventional commits |
 
 **No test framework is configured.** The build command (`tsc && vite build`) serves as the primary validation.
 
