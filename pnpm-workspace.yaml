@@ -1,0 +1,5 @@
+peerDependencyRules:
+  allowedVersions:
+    # orval -> tsconfck 3.1.6 declares peer typescript@^5, works fine with TS 6.
+    # Scoped override keeps strict-peer-dependencies enforced everywhere else.
+    'tsconfck>typescript': '6'

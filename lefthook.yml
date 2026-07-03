@@ -1,8 +1,26 @@
 pre-commit:
   parallel: true
   commands:
+    biome:
+      glob: "*.{js,jsx,ts,tsx,json,jsonc,css}"
+      run: biome check --write --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}
+      stage_fixed: true
+    keep-sorted:
+      run: keep-sorted {staged_files}
+      stage_fixed: true
+    just-fmt:
+      run: just --fmt
+      stage_fixed: true
+    gitleaks:
+      run: gitleaks git --staged --redact=100
     build:
       run: pnpm run build
+
+commit-msg:
+  commands:
+    cocogitto:
+      run: cog verify --file {1}
+
 pre-push:
   commands:
     image:

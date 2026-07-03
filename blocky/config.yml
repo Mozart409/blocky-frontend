@@ -7,3 +7,21 @@ port: 53
 httpPort: 4000
 httpsPort: 443
 logLevel: info
+
+# Minimal inline denylist so blocked/top-blocked stats are populated in dev.
+blocking:
+  denylists:
+    ads:
+      - |
+        doubleclick.net
+        ad.doubleclick.net
+        googleadservices.com
+        ads.google.com
+        google-analytics.com
+  clientGroupsBlock:
+    default:
+      - ads
+
+# In-memory statistics over a rolling 24h window, served at GET /api/stats.
+statistics:
+  enable: true

@@ -8,9 +8,4 @@ For features, configuration, and installation see the [project documentation](ht
  * OpenAPI spec version: 1.0
  */
 
-export interface ApiQueryRequest {
-  /** query for DNS request */
-  query: string;
-  /** request type (A, AAAA, ...) */
-  type: string;
-}
+export type ApiListCountsAllowlist = {[key: string]: number};

@@ -1,13 +1,16 @@
 # https://just.systems
 
+set unstable
+set dotenv-load
+
 default:
     just --choose
 
 up: clear
-    podman compose up -d --build 
+    podman-compose up -d --build 
 
 down: clear
-    podman compose down
+    podman-compose down
 
 clear:
     clear

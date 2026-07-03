@@ -21,7 +21,7 @@ COPY . .
 ENV NODE_ENV=production
 RUN pnpm run build
 
-FROM caddy:2.11.2-alpine AS runner
+FROM caddy:2.11.4-alpine AS runner
 
 LABEL org.opencontainers.image.source="https://github.com/Mozart409/blocky-frontend" \
     org.opencontainers.image.url="https://github.com/Mozart409/blocky-frontend" \

@@ -21,23 +21,27 @@
       in {
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
-            nodejs_24
-            pnpm
-            podman
+            # keep-sorted start
+            actionlint
+            biome
+            claude-code
+            cocogitto
+            git
+            gitleaks
+            keep-sorted
             lefthook
             ni
-            podman-compose
+            nodejs_24
             opencode
-            cocogitto
-            actionlint
-            claude-code
+            pnpm
+            podman
+            podman-compose
             trivy
-            git
+            # keep-sorted end
           ];
 
           shellHook = ''
             lefthook install
-            cog install-hook
             echo "Blocky Frontend dev environment loaded"
             echo "Node: $(node --version)"
             echo "pnpm: $(pnpm --version)"
