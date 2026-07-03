@@ -8,6 +8,10 @@
 # `v` prefix, so cocogitto must read/write tags the same way.
 tag_prefix = "v"
 
+# `git merge` commits (e.g. "Merge pull request #240 …") aren't conventional
+# commits — skip them instead of erroring during check/bump.
+ignore_merge_commits = true
+
 # Keep package.json's "version" in sync with the git tag.
 # pre-bump hooks run *before* the version commit is created, so the edited
 # package.json is included in that commit (and thus the tag).
