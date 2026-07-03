@@ -42,16 +42,7 @@
     "vite": "^8.0.16"
   },
   "packageManager": "pnpm@10.28.2",
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@swc/core",
-      "esbuild",
-      "lefthook"
-    ],
-    "ignoredBuiltDependencies": [
-      "lefthook"
-    ]
-  },
+  "pnpm": {},
   "engines": {
     "node": "24"
   }
