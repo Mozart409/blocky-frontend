@@ -25,8 +25,8 @@ pnpm dev                 # Start dev server (auto-runs docker compose up -d)
 | `pnpm start` | Preview production build |
 | `pnpm api:generate` | Generate API client from OpenAPI spec (requires blocky running) |
 | `pnpm up` / `pnpm down` | Start/stop Docker Compose services |
-| `pnpm commit` | Commitizen for conventional commits |
 | `pnpm change` | Create changeset for versioning |
+| `pnpm bump` | cocogitto release (`cog bump --auto`): changelog + git tag from conventional commits |
 
 **No test framework is configured.** The build command (`tsc && vite build`) serves as the primary validation.
 
@@ -238,7 +238,7 @@ Production uses Caddy as the web server (see `Caddyfile`).
 
 1. **Always use `nix develop`** before running pnpm commands
 2. **Regenerate API client** after OpenAPI spec changes
-3. **Use conventional commits** via `pnpm commit`
+3. **Use conventional commits** — plain `git commit`, validated on commit-msg by `cog verify`
 4. **Prefer generated API hooks** over manual fetch calls
 5. **Use FC type** for all functional components
 6. **Handle loading/error states** explicitly in components

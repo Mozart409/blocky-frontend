@@ -8,10 +8,10 @@
     "build": "tsc && vite build",
     "change": "pnpm changeset",
     "release": "pnpm changeset version",
+    "bump": "cog bump --auto",
     "start": "vite preview",
     "image": "podman build --platform linux/arm64,linux/amd64 -t mozart409/blocky-frontend:latest .",
-    "image-amd": "podman build --platform linux/amd64 -t mozart409/blocky-frontend:latest .",
-    "commit": "cz"
+    "image-amd": "podman build --platform linux/amd64 -t mozart409/blocky-frontend:latest ."
   },
   "dependencies": {
     "@tanstack/react-query": "^5.101.2",
