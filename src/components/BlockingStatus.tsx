@@ -8,8 +8,19 @@ import {
   getBlockingStatusQueryKey
 } from '../api/endpoints/blocking/blocking'
 
+// Quick-disable durations. `undefined` means disable indefinitely (blocky default).
+const DISABLE_DURATIONS: { label: string; duration?: string }[] = [
+  { label: 'Disable', duration: undefined },
+  { label: '5m', duration: '5m' },
+  { label: '30m', duration: '30m' },
+  { label: '1h', duration: '1h' }
+]
+
 export const BlockingStatus: FC = () => {
-  const { status, data, error } = useBlockingStatus()
+  // Poll so the banner reflects auto re-enable after a timed disable expires.
+  const { status, data, error } = useBlockingStatus({
+    query: { refetchInterval: 5000 }
+  })
 
   if (data === undefined) {
     return null
@@ -44,52 +55,80 @@ export const BlockingStatus: FC = () => {
 
   if (data) {
     return (
-      <>{status === 'success' && <Banner status={data.data.enabled} />}</>
+      <>
+        {status === 'success' && (
+          <Banner
+            enabled={data.data.enabled}
+            autoEnableInSec={data.data.autoEnableInSec}
+          />
+        )}
+      </>
     )
   }
 
   return null
 }
 
-export function Banner({ status }: { status: boolean }) {
+function formatCountdown(totalSec: number): string {
+  const s = Math.max(0, Math.round(totalSec))
+  const m = Math.floor(s / 60)
+  const rem = s % 60
+  if (m <= 0) return `${rem}s`
+  return `${m}m ${rem}s`
+}
+
+export function Banner({
+  enabled,
+  autoEnableInSec
+}: {
+  enabled: boolean
+  autoEnableInSec?: number
+}) {
   const queryClient = useQueryClient()
+
+  const invalidateStatus = () =>
+    queryClient.invalidateQueries({ queryKey: getBlockingStatusQueryKey() })
 
   const mutationEnable = useMutation({
     mutationFn: () => enableBlocking(),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: getBlockingStatusQueryKey() })
-    }
+    onSuccess: invalidateStatus
   })
 
   const mutationDisable = useMutation({
-    mutationFn: () => disableBlocking(),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: getBlockingStatusQueryKey() })
-    }
+    mutationFn: (duration?: string) =>
+      disableBlocking(duration ? { duration } : undefined),
+    onSuccess: invalidateStatus
   })
 
-  if (status === true) {
+  if (enabled === true) {
     return (
       <div className="relative bg-sky-600">
         <div className="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
           <div className="pr-16 sm:text-center sm:px-16">
-            <p className="font-medium text-white">
+            <p className="font-medium text-white flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
               <span className="md:hidden">Blocking enabled</span>
               <span className="hidden md:inline">
-                You are save. Blocking is enabled.
+                You are safe. Blocking is enabled.
               </span>
-              <span className="block sm:ml-2 sm:inline-block">
-                <button
-                  type="button"
-                  onClick={() => {
-                    mutationDisable.mutate()
-                  }}
-                >
-                  <p className="text-white font-bold underline">
-                    {' '}
-                    Disable Blocking
-                  </p>
-                </button>
+              <span className="inline-flex flex-wrap items-center gap-2">
+                {DISABLE_DURATIONS.map(({ label, duration }) => (
+                  <button
+                    key={label}
+                    type="button"
+                    disabled={mutationDisable.isPending}
+                    onClick={() => {
+                      mutationDisable.mutate(duration)
+                    }}
+                    className="rounded-md bg-sky-700 hover:bg-sky-800 px-2 py-1 text-sm font-semibold text-white focus:outline-none focus:ring-2 focus:ring-white disabled:opacity-60"
+                    title={
+                      duration
+                        ? `Disable blocking for ${duration}`
+                        : 'Disable blocking indefinitely'
+                    }
+                  >
+                    {label}
+                  </button>
+                ))}
               </span>
             </p>
           </div>
@@ -98,27 +137,31 @@ export function Banner({ status }: { status: boolean }) {
     )
   }
 
-  if (status === false) {
+  if (enabled === false) {
     return (
       <div className="relative bg-red-600">
         <div className="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
           <div className="pr-16 sm:text-center sm:px-16">
-            <p className="font-medium text-white">
+            <p className="font-medium text-white flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
               <span className="md:hidden">Blocking disabled</span>
               <span className="hidden md:inline">
                 You are exposed. Blocking is disabled.
               </span>
-              <span className="block sm:ml-2 sm:inline-block">
+              {autoEnableInSec !== undefined && autoEnableInSec > 0 && (
+                <span className="inline-block rounded bg-red-800 px-2 py-0.5 text-sm">
+                  Auto-enables in {formatCountdown(autoEnableInSec)}
+                </span>
+              )}
+              <span className="inline-block">
                 <button
                   type="button"
+                  disabled={mutationEnable.isPending}
                   onClick={() => {
                     mutationEnable.mutate()
                   }}
+                  className="rounded-md bg-red-800 hover:bg-red-900 px-2 py-1 text-sm font-semibold text-white focus:outline-none focus:ring-2 focus:ring-white disabled:opacity-60"
                 >
-                  <p className="text-white font-bold underline">
-                    {' '}
-                    Enable Blocking
-                  </p>
+                  Enable Blocking
                 </button>
               </span>
             </p>
