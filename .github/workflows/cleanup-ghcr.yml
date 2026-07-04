@@ -22,6 +22,12 @@ jobs:
         uses: dataaxiom/ghcr-cleanup-action@d52806a0dc70b430571a37da1fde39733ffd640f # v1.2.2
         with:
           packages: blocky-frontend
+          # Keep only the 4 newest tagged images (sorted by date); older release
+          # tags are deleted. Their per-arch child manifests then become orphaned
+          # and are swept by delete-untagged below in the same run.
+          keep-n-tagged: 4
           delete-untagged: true
+          # Remove broken multi-arch images whose platform children are missing.
+          delete-ghost-images: true
           # Flip to true for a first, non-destructive run to see what it would remove.
           dry-run: false
