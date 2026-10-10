@@ -29,6 +29,13 @@ pnpm dev                 # Start dev server (auto-runs docker compose up -d)
 
 **No test framework is configured.** The build command (`tsc && vite build`) serves as the primary validation.
 
+## Testing Philosophy
+
+- **Never write unit tests after writing code.** Unit tests written after the fact tend to re-describe the implementation rather than verify behavior.
+- **Highly prefer E2E tests as the sole testing mechanism.** Use them to verify complex features end-to-end. At the end of an E2E test, produce a verifiable and repeatable artifact (e.g., a downloaded/verified file, a persisted DB row, or an API response fixture) rather than just asserting that a process exited cleanly.
+- If a system must be tested in isolation, first write down all the ways it could fail, then write code to guard against those failure modes. Do not write the code first and backfill unit tests against it.
+- When writing an E2E test, do not pick the simplest possible scenario to prove the happy path works. Pick a medium-to-hard scenario when verifying the work.
+
 ### Tooling comes from the Nix flake
 
 All dev/CI tooling (Node, pnpm, Biome, gitleaks, lefthook, cocogitto,
