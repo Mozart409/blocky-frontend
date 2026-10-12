@@ -25,7 +25,8 @@ branch_whitelist = ["main"]
 #    package.json is included in the version commit (and thus the tag).
 pre_bump_hooks = [
   "pnpm build",
-  "pnpm version {{version}} --no-git-tag-version --allow-same-version",
+  # --no-git-checks: cog has already written CHANGELOG.md, so the tree is dirty.
+  "pnpm version {{version}} --no-git-tag-version --allow-same-version --no-git-checks",
 ]
 
 # Push the version commit and tag; the tag triggers the Docker publish workflow.
