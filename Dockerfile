@@ -2,13 +2,13 @@
 FROM node:24-alpine AS builder
 
 # Enable pnpm
-RUN corepack enable && corepack prepare pnpm@10.28.2 --activate
+RUN corepack enable && corepack prepare pnpm@12.9.0 --activate
 
 # Set working directory
 WORKDIR /app
 
 # Copy dependency files first (for better Docker layer caching)
-COPY package.json pnpm-lock.yaml .npmrc ./
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc ./
 
 # Install dependencies with cache mount for faster rebuilds
 RUN --mount=type=cache,target=/root/.local/share/pnpm/store \
@@ -21,7 +21,7 @@ COPY . .
 ENV NODE_ENV=production
 RUN pnpm run build
 
-FROM caddy:2.11.4-alpine AS runner
+FROM caddy:2.11.7-alpine AS runner
 
 LABEL org.opencontainers.image.source="https://github.com/Mozart409/blocky-frontend" \
     org.opencontainers.image.url="https://github.com/Mozart409/blocky-frontend" \
