@@ -1,7 +1,7 @@
 import type { FC, ReactNode } from 'react'
 
 import { useGetStats } from '../api/endpoints/stats/stats'
-import type { ApiNameCount } from '../api/schemas'
+import type { ApiHourPoint, ApiNameCount } from '../api/schemas'
 
 const fmt = (n: number) => n.toLocaleString()
 
@@ -43,7 +43,8 @@ export const StatsDashboard: FC = () => {
   if (!data) return null
   const stats = data.data
   const s = stats.summary
-  const blockedPct = s.queries > 0 ? (s.blocked / s.queries) * 100 : 0
+  const pct = (n: number) =>
+    `${(s.queries > 0 ? (n / s.queries) * 100 : 0).toFixed(1)}%`
 
   return (
     <section className="space-y-6">
@@ -58,13 +59,19 @@ export const StatsDashboard: FC = () => {
       </div>
 
       {/* Summary cards */}
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-7">
         <Stat label="Queries" value={fmt(s.queries)} />
         <Stat
           label="Blocked"
           value={fmt(s.blocked)}
-          sub={`${blockedPct.toFixed(1)}%`}
+          sub={pct(s.blocked)}
           accent="text-red-500"
+        />
+        <Stat
+          label="Filtered"
+          value={fmt(s.filtered)}
+          sub={pct(s.filtered)}
+          accent="text-amber-500"
         />
         <Stat label="Cached" value={fmt(s.cached)} accent="text-sky-500" />
         <Stat label="Forwarded" value={fmt(s.forwarded)} />
@@ -78,12 +85,13 @@ export const StatsDashboard: FC = () => {
       {/* Per-hour time series */}
       <div className={card}>
         <h3 className="mb-3 text-sm font-semibold text-slate-700 dark:text-slate-200">
-          Queries vs. blocked (per hour)
+          Queries vs. blocked and filtered (per hour)
         </h3>
         <HourChart points={stats.perHour} />
         <div className="mt-2 flex gap-4 text-xs text-slate-500 dark:text-slate-400">
           <Legend className="bg-sky-500" label="Queries" />
           <Legend className="bg-red-500" label="Blocked" />
+          <Legend className="bg-amber-500" label="Filtered" />
         </div>
       </div>
 
@@ -158,11 +166,7 @@ function Legend({ className, label }: { className: string; label: string }) {
   )
 }
 
-function HourChart({
-  points,
-}: {
-  points: { hour: string; queries: number; blocked: number }[]
-}) {
+function HourChart({ points }: { points: ApiHourPoint[] }) {
   if (!points || points.length === 0) {
     return (
       <p className="text-sm text-slate-500 dark:text-slate-400">
@@ -179,7 +183,7 @@ function HourChart({
           className="relative h-full min-w-[0.5rem] max-w-[2.5rem] flex-1 rounded-t bg-slate-100 dark:bg-slate-700/40"
           title={`${new Date(p.hour).toLocaleTimeString([], {
             hour: '2-digit',
-          })} — ${fmt(p.queries)} queries, ${fmt(p.blocked)} blocked`}
+          })} — ${fmt(p.queries)} queries, ${fmt(p.blocked)} blocked, ${fmt(p.filtered)} filtered`}
         >
           <div
             className="absolute bottom-0 w-full rounded-t bg-sky-500/80"
@@ -188,6 +192,14 @@ function HourChart({
           <div
             className="absolute bottom-0 w-full rounded-t bg-red-500"
             style={{ height: `${(p.blocked / max) * 100}%` }}
+          />
+          {/* Filtered is stacked on top of blocked; neither counts as the other. */}
+          <div
+            className="absolute w-full bg-amber-500"
+            style={{
+              bottom: `${(p.blocked / max) * 100}%`,
+              height: `${(p.filtered / max) * 100}%`,
+            }}
           />
         </div>
       ))}

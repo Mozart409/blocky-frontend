@@ -4,7 +4,7 @@ Guidelines for AI coding agents working in this repository.
 
 ## Project Overview
 
-A React frontend for [Blocky](https://github.com/0xERR0R/blocky), a DNS proxy and ad-blocker. Built with React 18, TypeScript, Vite, TanStack Query, and Tailwind CSS.
+A React frontend for [Blocky](https://github.com/0xERR0R/blocky), a DNS proxy and ad-blocker. Built with React 19, TypeScript, Vite, TanStack Query, and Tailwind CSS.
 
 ## Development Environment
 
@@ -29,6 +29,13 @@ pnpm dev                 # Start dev server (auto-runs docker compose up -d)
 
 **No test framework is configured.** The build command (`tsc && vite build`) serves as the primary validation.
 
+## Testing Philosophy
+
+- **Never write unit tests after writing code.** Unit tests written after the fact tend to re-describe the implementation rather than verify behavior.
+- **Highly prefer E2E tests as the sole testing mechanism.** Use them to verify complex features end-to-end. At the end of an E2E test, produce a verifiable and repeatable artifact (e.g., a downloaded/verified file, a persisted DB row, or an API response fixture) rather than just asserting that a process exited cleanly.
+- If a system must be tested in isolation, first write down all the ways it could fail, then write code to guard against those failure modes. Do not write the code first and backfill unit tests against it.
+- When writing an E2E test, do not pick the simplest possible scenario to prove the happy path works. Pick a medium-to-hard scenario when verifying the work.
+
 ### Tooling comes from the Nix flake
 
 All dev/CI tooling (Node, pnpm, Biome, gitleaks, lefthook, cocogitto,
@@ -48,10 +55,10 @@ binaries are on `PATH`. The flake `shellHook` runs `lefthook install`.
 ### Git Hooks (Lefthook)
 
 - **pre-commit** (parallel): `biome check --write` (lint/format, `stage_fixed`),
-  `keep-sorted` (`stage_fixed`), `just --fmt` (`stage_fixed`),
-  `gitleaks git --staged` (secret scan), and `pnpm run build`
+  `keep-sorted` (`stage_fixed`), `just --fmt` (`stage_fixed`), and
+  `gitleaks git --staged` (secret scan)
 - **commit-msg**: `cog verify` (cocogitto) enforces Conventional Commits
-- **pre-push**: `pnpm run image-amd` and `actionlint`
+- **pre-push**: `pnpm run image-amd`, `actionlint`, and `pnpm run build`
 
 `keep-sorted` alphabetizes any block delimited by start/end marker comments.
 Wrap a growing list (deps, ignore rules, plugin arrays) to keep it sorted:
@@ -139,7 +146,7 @@ export const MyComponent: FC = () => {
 
 ### Error Handling
 
-1. **ErrorBoundary** wraps the app in `main.tsx`:
+1. **ErrorBoundary** wraps the app in `App.tsx` (fallback: `components/ErrorFallBack.tsx`):
 ```typescript
 <ErrorBoundary FallbackComponent={ErrorFallback}>
   <App />
@@ -178,8 +185,11 @@ API client is auto-generated from OpenAPI spec using Orval:
 pnpm api:generate  # Requires blocky running at localhost:4000
 ```
 
+Without a running blocky, generate from the spec in blocky's repo
+(`docs/api/openapi.yaml` at the release tag): `pnpm exec orval --input <file>`.
+
 Generated files in `src/api/`:
-- `endpoints/` - React Query hooks by API tag (blocking, cache, lists, query)
+- `endpoints/` - React Query hooks by API tag (blocking, cache, lists, query, stats)
 - `schemas/` - TypeScript types from OpenAPI schemas
 
 **Usage**:
@@ -189,10 +199,6 @@ import { useBlockingStatus } from './api/endpoints/blocking/blocking'
 const { data, isLoading } = useBlockingStatus()
 // data.data.enabled, data.data.disabledGroups, etc.
 ```
-
-### Legacy API (Deprecated)
-
-Manual API functions exist in `src/utils/api.ts` - prefer generated client.
 
 ## Project Structure
 
@@ -204,22 +210,22 @@ src/
 │   └── mutator/          # Custom axios instance
 ├── components/           # React components
 │   ├── BlockingStatus.tsx
+│   ├── CacheFlush.tsx
 │   ├── DNSQuery.tsx
 │   ├── ErrorFallBack.tsx
 │   ├── RefreshList.tsx
 │   ├── Spacer.tsx
+│   ├── StatsDashboard.tsx
 │   └── ThemeToggle.tsx
-├── utils/                # Utilities (legacy API, types)
-├── App.tsx               # Main app component
+├── App.tsx               # Main app component + ErrorBoundary
 ├── main.tsx              # Entry point with providers
 └── index.css             # Global Tailwind styles
 ```
 
 ## Key Dependencies
 
-- **React 18** with **TanStack React Query 5** for data fetching
+- **React 19** with **TanStack React Query 5** for data fetching
 - **Axios** as HTTP client (used by generated code)
-- **Headless UI** for accessible components
 - **react-hot-toast** for notifications
 - **react-error-boundary** for error handling
 - **usehooks-ts** for utility hooks (dark mode, etc.)
@@ -231,7 +237,11 @@ pnpm image      # Build multi-arch image (arm/v7, arm64, amd64)
 pnpm image-amd  # Build amd64-only image
 ```
 
-Production uses Caddy as the web server (see `Caddyfile`).
+Production uses Caddy as the web server (see `Caddyfile`). The Dockerfile
+rebuilds the caddy binary with a pinned Go toolchain and `golang.org/x/*`
+versions (`caddy-builder` stage) so the image picks up Go security fixes
+before upstream caddy does. Bump those pins when `just trivy` reports Go CVEs;
+documented exceptions live in `.trivyignore`.
 
 ## Conventions to Follow
 

@@ -24,7 +24,6 @@
             # keep-sorted start
             actionlint
             biome
-            claude-code
             cocogitto
             git
             gitleaks
@@ -32,7 +31,6 @@
             lefthook
             ni
             nodejs_24
-            opencode
             pnpm
             podman
             podman-compose

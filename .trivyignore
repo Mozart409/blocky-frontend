@@ -1,0 +1,3 @@
+# golang.org/x/crypto/openpgp is deprecated with no fixed version; the advisory
+# flags the whole x/crypto module pulled in by caddy. Re-check on caddy bumps.
+GO-2026-5932

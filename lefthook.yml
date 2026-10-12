@@ -13,17 +13,15 @@ pre-commit:
       stage_fixed: true
     gitleaks:
       run: gitleaks git --staged --redact=100
-    build:
-      run: pnpm run build
-
 commit-msg:
   commands:
     cocogitto:
       run: cog verify --file {1}
-
 pre-push:
   commands:
     image:
       run: pnpm run image-amd
     actionlint:
       run: actionlint
+    build:
+      run: pnpm run build
