@@ -13,19 +13,28 @@ A React frontend for [Blocky](https://github.com/0xERR0R/blocky), a DNS proxy an
 ```bash
 nix develop              # Enter dev shell (Node 24, pnpm)
 pnpm install             # Install dependencies
-pnpm dev                 # Start dev server (auto-runs docker compose up -d)
+just dev                 # Start compose stack (blocky) + Vite dev server
 ```
 
 ## Build/Lint/Test Commands
 
+**Split of responsibilities:** `package.json` scripts run only Node tooling
+(Vite, tsc, Orval). Everything that involves other tools (podman, cog,
+biome, trivy, nix) is a recipe in the `justfile`. New tasks follow the same rule.
+
 | Command | Description |
 |---------|-------------|
-| `pnpm dev` | Start Vite dev server (runs `docker compose up -d` first) |
+| `pnpm dev` | Start the Vite dev server only |
 | `pnpm build` | TypeScript check + Vite production build |
 | `pnpm start` | Preview production build |
 | `pnpm api:generate` | Generate API client from OpenAPI spec (requires blocky running) |
-| `pnpm up` / `pnpm down` | Start/stop Docker Compose services |
-| `pnpm bump` | cocogitto release (`cog bump --auto`): bumps `package.json`, changelog + git tag from conventional commits |
+| `just dev` | `just up`, then `pnpm dev` |
+| `just up` / `just down` | Start/stop the podman-compose stack |
+| `just check` | `biome check --write .` |
+| `just image` / `just image-amd` | Build the multi-arch / amd64-only image with podman |
+| `just trivy` | Build the image and scan it with trivy |
+| `just bump` | cocogitto release (`cog bump --auto`): builds, bumps `package.json`, changelog + git tag, then **pushes** (see Commits & Releases) |
+| `just update` / `just update-pnpm` | Update flake inputs (and commit) / interactively update pnpm deps |
 
 **No test framework is configured.** The build command (`tsc && vite build`) serves as the primary validation.
 
@@ -58,7 +67,7 @@ binaries are on `PATH`. The flake `shellHook` runs `lefthook install`.
   `keep-sorted` (`stage_fixed`), `just --fmt` (`stage_fixed`), and
   `gitleaks git --staged` (secret scan)
 - **commit-msg**: `cog verify` (cocogitto) enforces Conventional Commits
-- **pre-push**: `pnpm run image-amd`, `actionlint`, and `pnpm run build`
+- **pre-push**: `just image-amd`, `actionlint`, and `pnpm run build`
 
 `keep-sorted` alphabetizes any block delimited by start/end marker comments.
 Wrap a growing list (deps, ignore rules, plugin arrays) to keep it sorted:
@@ -71,6 +80,37 @@ buildInputs = with pkgs; [
   # keep-sorted end
 ];
 ```
+
+## Commits & Releases
+
+The commit type decides both the version bump and whether the commit appears
+in `CHANGELOG.md`. The changelog is for people **deploying the image**, not for
+maintainers. **`cog.toml` is the source of truth.** Before relying on the table
+below, check `[commit_types]` in `cog.toml`, and update this table if they disagree.
+
+| Type | Use for | Bump | In changelog |
+|------|---------|------|--------------|
+| `feat` | User-visible functionality in the UI/image | minor | yes |
+| `fix` | User-visible bugs; `fix(security)` for CVE rebuilds | patch | yes |
+| `docs` | README, compatibility notes | none | yes |
+| `build` | Dockerfile, deps, toolchain pins | patch | no |
+| `chore` | Tooling, flake, dev setup, API regen | none | no |
+| `ci` | GitHub Actions workflows | none | no |
+| `refactor` / `style` | Code changes with no behavior change | none | no |
+
+Rules:
+- **Tooling is never `feat` or `fix`.** Switching to podman/biome/cog,
+  pnpm settings, or keep-sorted blocks are `chore`/`build`/`ci`.
+  Misusing `feat`/`fix` pollutes the changelog and causes needless releases.
+- **Security rebuilds use `fix(security): …`**, not `build`. Otherwise the
+  release gets an empty changelog section.
+- **Note blocky compatibility.** When the supported blocky version changes,
+  say so in a user-visible commit, e.g. `feat(blocky): support blocky v0.35.0`.
+
+`just bump` runs `pnpm build`, syncs `package.json`, commits, tags
+`v{{version}}`, and **pushes the commit and tag**. Pushing the tag triggers the
+Docker publish workflow. It only runs on `main`, and `cog check` only validates
+commits since the latest tag (`from_latest_tag`).
 
 ## Code Style Guidelines
 
@@ -233,8 +273,8 @@ src/
 ## Docker
 
 ```bash
-pnpm image      # Build multi-arch image (arm/v7, arm64, amd64)
-pnpm image-amd  # Build amd64-only image
+just image      # Build multi-arch image (arm64, amd64)
+just image-amd  # Build amd64-only image
 ```
 
 Production uses Caddy as the web server (see `Caddyfile`). The Dockerfile
@@ -245,9 +285,9 @@ documented exceptions live in `.trivyignore`.
 
 ## Conventions to Follow
 
-1. **Always use `nix develop`** before running pnpm commands
+1. **Always use `nix develop`** before running pnpm or just commands
 2. **Regenerate API client** after OpenAPI spec changes
-3. **Use conventional commits** — plain `git commit`, validated on commit-msg by `cog verify`
+3. **Use conventional commits** — plain `git commit`, validated on commit-msg by `cog verify`; pick the type per [Commits & Releases](#commits--releases) (check `cog.toml` first)
 4. **Prefer generated API hooks** over manual fetch calls
 5. **Use FC type** for all functional components
 6. **Handle loading/error states** explicitly in components

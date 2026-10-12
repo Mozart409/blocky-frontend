@@ -1,7 +1,7 @@
 # Cocogitto configuration — https://docs.cocogitto.io
 #
 # `cog verify` validates commit messages (wired via the lefthook commit-msg hook).
-# `cog bump` (see `pnpm bump`) computes the next SemVer version from the
+# `cog bump` (see `just bump`) computes the next SemVer version from the
 # conventional-commit history, updates the changelog, and creates a git tag.
 
 # Existing tags (and the Docker publish workflow's `v*.*.*` trigger) use a
@@ -12,14 +12,43 @@ tag_prefix = "v"
 # commits — skip them instead of erroring during check/bump.
 ignore_merge_commits = true
 
-# Keep package.json's "version" in sync with the git tag.
-# pre-bump hooks run *before* the version commit is created, so the edited
-# package.json is included in that commit (and thus the tag).
+# Early history contains non-conventional commits (e.g. "Create docker-publish.yml");
+# only validate commits since the latest release tag.
+from_latest_tag = true
+
+# Releases are only cut from main.
+branch_whitelist = ["main"]
+
+# pre-bump hooks run *before* the version commit is created.
+# 1. Build first so a broken tree never gets a tag (tags trigger Docker publish).
+# 2. Keep package.json's "version" in sync with the git tag; the edited
+#    package.json is included in the version commit (and thus the tag).
 pre_bump_hooks = [
+  "pnpm build",
   "pnpm version {{version}} --no-git-tag-version --allow-same-version",
 ]
 
-post_bump_hooks = []
+# Push the version commit and tag; the tag triggers the Docker publish workflow.
+post_bump_hooks = [
+  "git push",
+  "git push origin v{{version}}",
+]
+
+# Dependency/toolchain rebuilds (e.g. patched Go for caddy CVEs) must ship a
+# new image, so `build` commits trigger a patch release.
+# The changelog is for people deploying the image: internal-only commit types
+# are omitted from it (they still count for bumps where configured).
+[commit_types]
+build = { changelog_title = "Build system", bump_patch = true, omit_from_changelog = true }
+chore = { changelog_title = "Miscellaneous Chores", omit_from_changelog = true }
+ci = { changelog_title = "Continuous Integration", omit_from_changelog = true }
+refactor = { changelog_title = "Refactoring", omit_from_changelog = true }
+style = { changelog_title = "Style", omit_from_changelog = true }
 
 [changelog]
 path = "CHANGELOG.md"
+template = "remote"
+remote = "github.com"
+owner = "Mozart409"
+repository = "blocky-frontend"
+authors = [{ username = "Mozart409", signature = "Amadeus Mader" }]
