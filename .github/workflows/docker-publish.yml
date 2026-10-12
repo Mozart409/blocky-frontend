@@ -14,8 +14,10 @@ on:
 env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
-  # github.repository as <account>/<repo>
-  IMAGE_NAME: ${{ github.repository }}
+  # Must be lowercase: github.repository is "Mozart409/blocky-frontend" and the
+  # raw refs used by push-by-digest / imagetools aren't lowercased for us
+  # (only docker/metadata-action does that).
+  IMAGE_NAME: mozart409/blocky-frontend
 
 jobs:
   # Build each platform in parallel and push it BY DIGEST (no tag yet).
