@@ -20,7 +20,7 @@ commit-msg:
 pre-push:
   commands:
     image:
-      run: pnpm run image-amd
+      run: just image-amd
     actionlint:
       run: actionlint
     build:

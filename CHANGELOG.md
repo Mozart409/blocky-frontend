@@ -3,50 +3,27 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
-## v1.3.0 - 2026-07-03
+## [v1.3.0](https://github.com/Mozart409/blocky-frontend/compare/v1.2.2...v1.3.0) - 2026-07-03
 #### Features
-- (**biome**) setup biome - (e12ffeb) - Amadeus Mader
-- (**blocky**) add stats and a denylist - (b45ebf7) - Amadeus Mader
-- (**frontend**) add timed disable, statistics, and more actions - (0fd0279) - Amadeus Mader
-- (**tools**) add more keep-sorted stuff - (1936388) - Amadeus Mader
+- (**biome**) setup biome - ([e12ffeb](https://github.com/Mozart409/blocky-frontend/commit/e12ffebe49d3ea5005dbfbbb29d233b03b62970f)) - [@Mozart409](https://github.com/Mozart409)
+- (**blocky**) add stats and a denylist - ([b45ebf7](https://github.com/Mozart409/blocky-frontend/commit/b45ebf73ec20e29f5c2dc0d8c4d3dbb20a8ff618)) - [@Mozart409](https://github.com/Mozart409)
+- (**frontend**) add timed disable, statistics, and more actions - ([0fd0279](https://github.com/Mozart409/blocky-frontend/commit/0fd0279418e27554576ac9223233fc723706f92d)) - [@Mozart409](https://github.com/Mozart409)
+- (**tools**) add more keep-sorted stuff - ([1936388](https://github.com/Mozart409/blocky-frontend/commit/1936388981169deaf18293cc8db1f78fb3a63d40)) - [@Mozart409](https://github.com/Mozart409)
 #### Bug Fixes
-- (**changeset**) remove changeset - (0204b7d) - Amadeus Mader
-- (**dockerfile**) added .npmrc to dockerfile - (9785461) - Amadeus Mader
-- (**flake**) convert to podman - (2b25348) - Amadeus Mader
-- (**pnpm**) migrate to new settings - (cedc5f7) - Amadeus Mader
-- (**release**) ignore merge commits and add changelog marker - (82c12fc) - Amadeus Mader
-- (**security**) update caddy image to fix cves - (2223645) - Amadeus Mader
-- (**tools**) remove lefthook from npm - (6e613e6) - Amadeus Mader
-- (**tools**) switch to podman-compose - (c1639ff) - Amadeus Mader
-- (**tools**) switch to podman - (746d5bb) - Amadeus Mader
+- (**changeset**) remove changeset - ([0204b7d](https://github.com/Mozart409/blocky-frontend/commit/0204b7d5345176c1f9d1feca06a536754ea92437)) - [@Mozart409](https://github.com/Mozart409)
+- (**dockerfile**) added .npmrc to dockerfile - ([9785461](https://github.com/Mozart409/blocky-frontend/commit/97854617566d256853e2c3a3d46f49e1c65ee25c)) - [@Mozart409](https://github.com/Mozart409)
+- (**flake**) convert to podman - ([2b25348](https://github.com/Mozart409/blocky-frontend/commit/2b253488838f09cbb2ae728a5e55742a68241f8b)) - [@Mozart409](https://github.com/Mozart409)
+- (**pnpm**) migrate to new settings - ([cedc5f7](https://github.com/Mozart409/blocky-frontend/commit/cedc5f727e6defef60a1821d56c75c5b62d623d7)) - [@Mozart409](https://github.com/Mozart409)
+- (**release**) ignore merge commits and add changelog marker - ([82c12fc](https://github.com/Mozart409/blocky-frontend/commit/82c12fc2ebc82776f10590138e10c00da08187ad)) - [@Mozart409](https://github.com/Mozart409)
+- (**security**) update caddy image to fix cves - ([2223645](https://github.com/Mozart409/blocky-frontend/commit/22236458116674e2613804c122a962284a7fc63f)) - [@Mozart409](https://github.com/Mozart409)
+- (**tools**) remove lefthook from npm - ([6e613e6](https://github.com/Mozart409/blocky-frontend/commit/6e613e6de9129850701974a2b136ef6849d1f926)) - [@Mozart409](https://github.com/Mozart409)
+- (**tools**) switch to podman-compose - ([c1639ff](https://github.com/Mozart409/blocky-frontend/commit/c1639ff8fbe5a1438f84dd4bdc64266995bbd33c)) - [@Mozart409](https://github.com/Mozart409)
+- (**tools**) switch to podman - ([746d5bb](https://github.com/Mozart409/blocky-frontend/commit/746d5bb0f47ffabd38294fd9de2807f3334819c7)) - [@Mozart409](https://github.com/Mozart409)
 #### Documentation
-- (**readme**) add compat line - (80ac7d8) - Amadeus Mader
-- (**readme**) :memo: update readme and new screenshots - (72219f8) - Amadeus Mader
-#### Build system
-- (**deps**) bump @tanstack/react-query from 5.100.6 to 5.101.2 (#233) - (55db664) - dependabot[bot]
-- (**deps**) bump react-error-boundary from 6.1.1 to 6.1.2 (#235) - (cb2d608) - dependabot[bot]
-- (**deps**) bump axios from 1.16.0 to 1.18.1 (#232) - (f7490ac) - dependabot[bot]
-- (**deps**) bump actions/checkout from 6 to 7 (#239) - (6d6ba1e) - dependabot[bot]
-- (**deps**) bump fast-uri in the npm_and_yarn group across 1 directory (#229) - (b894953) - dependabot[bot], *dependabot[bot]*
-- (**deps-dev**) bump @vitejs/plugin-react from 6.0.1 to 6.0.3 (#234) - (7da7e75) - dependabot[bot]
-- (**deps-dev**) bump tailwindcss from 4.2.4 to 4.3.2 (#230) - (db10e96) - dependabot[bot]
-- (**deps-dev**) bump @types/node from 25.6.0 to 26.1.0 (#237) - (60b1209) - dependabot[bot]
-- (**deps-dev**) bump @tailwindcss/vite from 4.2.4 to 4.3.2 (#236) - (9888a24) - dependabot[bot]
-- (**deps-dev**) bump postcss from 8.5.12 to 8.5.16 (#231) - (e00a27c) - dependabot[bot]
-- (**deps-dev**) bump vite from 8.0.10 to 8.0.16 (#238) - (5fe0a23) - dependabot[bot]
-#### Refactoring
-- (**ci**) move to nix tools - (d98ed60) - Amadeus Mader
-- (**cog**) switch to cog - (7241b7a) - Amadeus Mader
-- (**tools**) use cog bump - (43b9aa9) - Amadeus Mader
-#### Miscellaneous Chores
-- (**biome**) fix fmt - (4fb70b8) - Amadeus Mader
-- (**deps**) upgrade pkgs - (2f5433f) - Amadeus Mader
-- (**deps**) upgrade blocky and change ports - (e221a22) - Amadeus Mader
-- (**deps**) upgrade flake - (7de50e7) - Amadeus Mader
-- (**openapi**) update schema to new blocky version - (1ab4689) - Amadeus Mader
+- (**readme**) add compat line - ([80ac7d8](https://github.com/Mozart409/blocky-frontend/commit/80ac7d8e225a8a8e0812559a06f7649e9daa3c1f)) - [@Mozart409](https://github.com/Mozart409)
+- (**readme**) :memo: update readme and new screenshots - ([72219f8](https://github.com/Mozart409/blocky-frontend/commit/72219f8158cdea5e310991ac794d34d3b65e2667)) - [@Mozart409](https://github.com/Mozart409)
 
 - - -
-
 
 ## 1.2.2
 

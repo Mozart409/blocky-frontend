@@ -53,10 +53,10 @@ Install dependencies
   pnpm install
 ```
 
-Start the development server
+Start blocky (podman-compose) and the development server
 
 ```bash
-  pnpm run dev
+  just dev
 ```
 
 Change the .env.example to .env.local for local development.
@@ -64,7 +64,7 @@ Change the .env.example to .env.local for local development.
 Production version frontend runs on [http://localhost:8002](http://localhost:8002)
 
 ```bash
-  docker compose up -d --remove-orphans
+  just up
 ```
 
 ## Authors
