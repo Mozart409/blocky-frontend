@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [v1.4.0](https://github.com/Mozart409/blocky-frontend/compare/2f0169a206f0578aba867ea16d57860e9e04b758..v1.4.0) - 2026-10-12
+#### Features
+- (**stats**) show filtered queries in dashboard - ([8ef4ae7](https://github.com/Mozart409/blocky-frontend/commit/8ef4ae7752bbfaa02a52382153bb82629e66eaea)) - [@Mozart409](https://github.com/Mozart409)
+#### Bug Fixes
+- (**ci**) delete more images - ([1ed235c](https://github.com/Mozart409/blocky-frontend/commit/1ed235c39d2c39f1f5902a0ffd7ab27c9073ee14)) - [@Mozart409](https://github.com/Mozart409)
+- (**ci**) Delete dependabot.yml - ([a823f1a](https://github.com/Mozart409/blocky-frontend/commit/a823f1ad968cfe6c30a505713e868b34f4f6b59e)) - Amadeus
+- (**release**) create annotated tags so --follow-tags pushes them - ([2f0169a](https://github.com/Mozart409/blocky-frontend/commit/2f0169a206f0578aba867ea16d57860e9e04b758)) - [@Mozart409](https://github.com/Mozart409)
+#### Documentation
+- (**agents**) update stale project facts - ([9a72bc8](https://github.com/Mozart409/blocky-frontend/commit/9a72bc8612ac701ce0122cc1448fc40de00803a1)) - [@Mozart409](https://github.com/Mozart409)
+- (**readme**) add blocky compatibility matrix - ([e3ea4fb](https://github.com/Mozart409/blocky-frontend/commit/e3ea4fb80fa54de43008d15f54a5ed35f37b43bf)) - [@Mozart409](https://github.com/Mozart409)
+- (**testing**) document testing philosophy - ([da17a05](https://github.com/Mozart409/blocky-frontend/commit/da17a0523bbcc492ba2bbd8b67e448bdd0abd12f)) - [@Mozart409](https://github.com/Mozart409)
+
+- - -
+
 ## [v1.3.0](https://github.com/Mozart409/blocky-frontend/compare/v1.2.2...v1.3.0) - 2026-07-03
 #### Features
 - (**biome**) setup biome - ([e12ffeb](https://github.com/Mozart409/blocky-frontend/commit/e12ffebe49d3ea5005dbfbbb29d233b03b62970f)) - [@Mozart409](https://github.com/Mozart409)
