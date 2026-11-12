@@ -22,19 +22,19 @@ just dev                 # Start compose stack (blocky) + Vite dev server
 (Vite, tsc, Orval). Everything that involves other tools (podman, cog,
 biome, trivy, nix) is a recipe in the `justfile`. New tasks follow the same rule.
 
-| Command | Description |
-|---------|-------------|
-| `pnpm dev` | Start the Vite dev server only |
-| `pnpm build` | TypeScript check + Vite production build |
-| `pnpm start` | Preview production build |
-| `pnpm api:generate` | Generate API client from OpenAPI spec (requires blocky running) |
-| `just dev` | `just up`, then `pnpm dev` |
-| `just up` / `just down` | Start/stop the podman-compose stack |
-| `just check` | `biome check --write .` |
-| `just image` / `just image-amd` | Build the multi-arch / amd64-only image with podman |
-| `just trivy` | Build the image and scan it with trivy |
-| `just bump` | cocogitto release (`cog bump --auto`): builds, bumps `package.json`, changelog + git tag, then **pushes** (see Commits & Releases) |
-| `just update` / `just update-pnpm` | Update flake inputs (and commit) / interactively update pnpm deps |
+| Command                            | Description                                                                                                                        |
+| ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `pnpm dev`                         | Start the Vite dev server only                                                                                                     |
+| `pnpm build`                       | TypeScript check + Vite production build                                                                                           |
+| `pnpm start`                       | Preview production build                                                                                                           |
+| `pnpm api:generate`                | Generate API client from OpenAPI spec (requires blocky running)                                                                    |
+| `just dev`                         | `just up`, then `pnpm dev`                                                                                                         |
+| `just up` / `just down`            | Start/stop the podman-compose stack                                                                                                |
+| `just check`                       | `biome check --write .`                                                                                                            |
+| `just image` / `just image-amd`    | Build the multi-arch / amd64-only image with podman                                                                                |
+| `just trivy`                       | Build the image and scan it with trivy                                                                                             |
+| `just bump`                        | cocogitto release (`cog bump --auto`): builds, bumps `package.json`, changelog + git tag, then **pushes** (see Commits & Releases) |
+| `just update` / `just update-pnpm` | Update flake inputs (and commit) / interactively update pnpm deps                                                                  |
 
 **No test framework is configured.** The build command (`tsc && vite build`) serves as the primary validation.
 
@@ -52,12 +52,12 @@ keep-sorted, actionlint, trivy, podman) is provided by `flake.nix` — **not**
 npm devDependencies. Always work inside `nix develop` (or direnv) so these
 binaries are on `PATH`. The flake `shellHook` runs `lefthook install`.
 
-| Tool | Command | Purpose |
-|------|---------|---------|
-| Biome | `biome check --write .` | Format + lint + import sorting (config: `biome.json`) |
-| gitleaks | `gitleaks git --staged` | Secret scanning |
-| keep-sorted | `keep-sorted <file>` | Sort marked blocks |
-| cocogitto | `cog verify --file <msg>` | Conventional Commit validation |
+| Tool        | Command                   | Purpose                                               |
+| ----------- | ------------------------- | ----------------------------------------------------- |
+| Biome       | `biome check --write .`   | Format + lint + import sorting (config: `biome.json`) |
+| gitleaks    | `gitleaks git --staged`   | Secret scanning                                       |
+| keep-sorted | `keep-sorted <file>`      | Sort marked blocks                                    |
+| cocogitto   | `cog verify --file <msg>` | Conventional Commit validation                        |
 
 > Biome ignores the Orval-generated `src/api/**` (see `biome.json` `files.includes`).
 
@@ -88,17 +88,18 @@ in `CHANGELOG.md`. The changelog is for people **deploying the image**, not for
 maintainers. **`cog.toml` is the source of truth.** Before relying on the table
 below, check `[commit_types]` in `cog.toml`, and update this table if they disagree.
 
-| Type | Use for | Bump | In changelog |
-|------|---------|------|--------------|
-| `feat` | User-visible functionality in the UI/image | minor | yes |
-| `fix` | User-visible bugs; `fix(security)` for CVE rebuilds | patch | yes |
-| `docs` | README, compatibility notes | none | yes |
-| `build` | Dockerfile, deps, toolchain pins | patch | no |
-| `chore` | Tooling, flake, dev setup, API regen | none | no |
-| `ci` | GitHub Actions workflows | none | no |
-| `refactor` / `style` | Code changes with no behavior change | none | no |
+| Type                 | Use for                                             | Bump  | In changelog |
+| -------------------- | --------------------------------------------------- | ----- | ------------ |
+| `feat`               | User-visible functionality in the UI/image          | minor | yes          |
+| `fix`                | User-visible bugs; `fix(security)` for CVE rebuilds | patch | yes          |
+| `docs`               | README, compatibility notes                         | none  | yes          |
+| `build`              | Dockerfile, deps, toolchain pins                    | patch | no           |
+| `chore`              | Tooling, flake, dev setup, API regen                | none  | no           |
+| `ci`                 | GitHub Actions workflows                            | none  | no           |
+| `refactor` / `style` | Code changes with no behavior change                | none  | no           |
 
 Rules:
+
 - **Tooling is never `feat` or `fix`.** Switching to podman/biome/cog,
   pnpm settings, or keep-sorted blocks are `chore`/`build`/`ci`.
   Misusing `feat`/`fix` pollutes the changelog and causes needless releases.
@@ -127,6 +128,7 @@ commits since the latest tag (`from_latest_tag`).
 > Run `biome check --write` — don't hand-order imports; the grouping below is illustrative.
 
 Order imports as follows:
+
 ```typescript
 // 1. React
 import { FC, useState } from 'react'
@@ -145,15 +147,15 @@ import './styles.css'
 
 ### Naming Conventions
 
-| Type | Convention | Example |
-|------|------------|---------|
-| Components | PascalCase | `BlockingStatus.tsx`, `DNSQuery.tsx` |
-| Component exports | Named export with FC type | `export const BlockingStatus: FC = () => {}` |
-| Hooks | camelCase with `use` prefix | `useBlockingStatus`, `useDarkMode` |
-| Utility files | camelCase | `api.ts`, `mutations.ts` |
-| Types/Interfaces | PascalCase | `BlockStatusResponse`, `ApiQueryResult` |
-| Variables | camelCase | `queryClient`, `blockingData` |
-| Constants | UPPER_SNAKE_CASE | `BASEURL` |
+| Type              | Convention                  | Example                                      |
+| ----------------- | --------------------------- | -------------------------------------------- |
+| Components        | PascalCase                  | `BlockingStatus.tsx`, `DNSQuery.tsx`         |
+| Component exports | Named export with FC type   | `export const BlockingStatus: FC = () => {}` |
+| Hooks             | camelCase with `use` prefix | `useBlockingStatus`, `useDarkMode`           |
+| Utility files     | camelCase                   | `api.ts`, `mutations.ts`                     |
+| Types/Interfaces  | PascalCase                  | `BlockStatusResponse`, `ApiQueryResult`      |
+| Variables         | camelCase                   | `queryClient`, `blockingData`                |
+| Constants         | UPPER_SNAKE_CASE            | `BASEURL`                                    |
 
 ### Component Structure
 
@@ -229,10 +231,12 @@ Without a running blocky, generate from the spec in blocky's repo
 (`docs/api/openapi.yaml` at the release tag): `pnpm exec orval --input <file>`.
 
 Generated files in `src/api/`:
+
 - `endpoints/` - React Query hooks by API tag (blocking, cache, lists, query, stats)
 - `schemas/` - TypeScript types from OpenAPI schemas
 
 **Usage**:
+
 ```typescript
 import { useBlockingStatus } from './api/endpoints/blocking/blocking'
 

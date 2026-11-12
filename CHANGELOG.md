@@ -2,28 +2,36 @@
 
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
-- - -
+---
+
 ## [v1.4.0](https://github.com/Mozart409/blocky-frontend/compare/2f0169a206f0578aba867ea16d57860e9e04b758..v1.4.0) - 2026-10-12
+
 #### Features
+
 - (**stats**) show filtered queries in dashboard - ([8ef4ae7](https://github.com/Mozart409/blocky-frontend/commit/8ef4ae7752bbfaa02a52382153bb82629e66eaea)) - [@Mozart409](https://github.com/Mozart409)
 #### Bug Fixes
+
 - (**ci**) delete more images - ([1ed235c](https://github.com/Mozart409/blocky-frontend/commit/1ed235c39d2c39f1f5902a0ffd7ab27c9073ee14)) - [@Mozart409](https://github.com/Mozart409)
 - (**ci**) Delete dependabot.yml - ([a823f1a](https://github.com/Mozart409/blocky-frontend/commit/a823f1ad968cfe6c30a505713e868b34f4f6b59e)) - Amadeus
 - (**release**) create annotated tags so --follow-tags pushes them - ([2f0169a](https://github.com/Mozart409/blocky-frontend/commit/2f0169a206f0578aba867ea16d57860e9e04b758)) - [@Mozart409](https://github.com/Mozart409)
 #### Documentation
+
 - (**agents**) update stale project facts - ([9a72bc8](https://github.com/Mozart409/blocky-frontend/commit/9a72bc8612ac701ce0122cc1448fc40de00803a1)) - [@Mozart409](https://github.com/Mozart409)
 - (**readme**) add blocky compatibility matrix - ([e3ea4fb](https://github.com/Mozart409/blocky-frontend/commit/e3ea4fb80fa54de43008d15f54a5ed35f37b43bf)) - [@Mozart409](https://github.com/Mozart409)
 - (**testing**) document testing philosophy - ([da17a05](https://github.com/Mozart409/blocky-frontend/commit/da17a0523bbcc492ba2bbd8b67e448bdd0abd12f)) - [@Mozart409](https://github.com/Mozart409)
 
-- - -
+---
 
 ## [v1.3.0](https://github.com/Mozart409/blocky-frontend/compare/v1.2.2...v1.3.0) - 2026-07-03
+
 #### Features
+
 - (**biome**) setup biome - ([e12ffeb](https://github.com/Mozart409/blocky-frontend/commit/e12ffebe49d3ea5005dbfbbb29d233b03b62970f)) - [@Mozart409](https://github.com/Mozart409)
 - (**blocky**) add stats and a denylist - ([b45ebf7](https://github.com/Mozart409/blocky-frontend/commit/b45ebf73ec20e29f5c2dc0d8c4d3dbb20a8ff618)) - [@Mozart409](https://github.com/Mozart409)
 - (**frontend**) add timed disable, statistics, and more actions - ([0fd0279](https://github.com/Mozart409/blocky-frontend/commit/0fd0279418e27554576ac9223233fc723706f92d)) - [@Mozart409](https://github.com/Mozart409)
 - (**tools**) add more keep-sorted stuff - ([1936388](https://github.com/Mozart409/blocky-frontend/commit/1936388981169deaf18293cc8db1f78fb3a63d40)) - [@Mozart409](https://github.com/Mozart409)
 #### Bug Fixes
+
 - (**changeset**) remove changeset - ([0204b7d](https://github.com/Mozart409/blocky-frontend/commit/0204b7d5345176c1f9d1feca06a536754ea92437)) - [@Mozart409](https://github.com/Mozart409)
 - (**dockerfile**) added .npmrc to dockerfile - ([9785461](https://github.com/Mozart409/blocky-frontend/commit/97854617566d256853e2c3a3d46f49e1c65ee25c)) - [@Mozart409](https://github.com/Mozart409)
 - (**flake**) convert to podman - ([2b25348](https://github.com/Mozart409/blocky-frontend/commit/2b253488838f09cbb2ae728a5e55742a68241f8b)) - [@Mozart409](https://github.com/Mozart409)
@@ -34,10 +42,11 @@ All notable changes to this project will be documented in this file. See [conven
 - (**tools**) switch to podman-compose - ([c1639ff](https://github.com/Mozart409/blocky-frontend/commit/c1639ff8fbe5a1438f84dd4bdc64266995bbd33c)) - [@Mozart409](https://github.com/Mozart409)
 - (**tools**) switch to podman - ([746d5bb](https://github.com/Mozart409/blocky-frontend/commit/746d5bb0f47ffabd38294fd9de2807f3334819c7)) - [@Mozart409](https://github.com/Mozart409)
 #### Documentation
+
 - (**readme**) add compat line - ([80ac7d8](https://github.com/Mozart409/blocky-frontend/commit/80ac7d8e225a8a8e0812559a06f7649e9daa3c1f)) - [@Mozart409](https://github.com/Mozart409)
 - (**readme**) :memo: update readme and new screenshots - ([72219f8](https://github.com/Mozart409/blocky-frontend/commit/72219f8158cdea5e310991ac794d34d3b65e2667)) - [@Mozart409](https://github.com/Mozart409)
 
-- - -
+---
 
 ## 1.2.2
 
@@ -82,7 +91,6 @@ All notable changes to this project will be documented in this file. See [conven
 - Modernize to React 19 and latest ecosystem
 
   BREAKING CHANGES:
-
   - Upgrade React 18.3 → 19.2 with new JSX transform
   - Migrate react-query v3 → @tanstack/react-query v5 with new API
   - Replace devenv with Nix flakes (new development setup)
@@ -91,7 +99,6 @@ All notable changes to this project will be documented in this file. See [conven
   - Replace redaxios with axios HTTP client
 
   New Features:
-
   - Auto-generated TypeScript API client from OpenAPI spec
   - Comprehensive development guidelines in AGENTS.md
   - Optimized Docker build process with health checks
