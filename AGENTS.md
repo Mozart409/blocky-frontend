@@ -59,7 +59,10 @@ binaries are on `PATH`. The flake `shellHook` runs `lefthook install`.
 | keep-sorted | `keep-sorted <file>`      | Sort marked blocks                                    |
 | cocogitto   | `cog verify --file <msg>` | Conventional Commit validation                        |
 
-> Biome ignores the Orval-generated `src/api/**` (see `biome.json` `files.includes`).
+> Biome ignores the Orval-generated `src/api/**` and `CHANGELOG.md` (see
+> `biome.json` `files.includes`). Leave `CHANGELOG.md` alone: cocogitto needs
+> the literal `- - -` separator, and Biome's markdown formatter rewrites it to
+> `---`, which breaks `cog bump`.
 
 ### Git Hooks (Lefthook)
 

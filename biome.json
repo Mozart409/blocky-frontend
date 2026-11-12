@@ -7,7 +7,14 @@
   },
   "files": {
     "ignoreUnknown": true,
-    "includes": ["**", "!src/api", "!dist", "!dist-ssr", "!**/*.svg"]
+    "includes": [
+      "**",
+      "!src/api",
+      "!dist",
+      "!dist-ssr",
+      "!**/*.svg",
+      "!CHANGELOG.md"
+    ]
   },
   "css": {
     "parser": {
