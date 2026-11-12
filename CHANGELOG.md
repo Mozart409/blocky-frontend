@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [v1.4.1](https://github.com/Mozart409/blocky-frontend/compare/6a07d2576cee28c99e2e03b5aa0e07093b8d62d4..v1.4.1) - 2026-11-12
+#### Bug Fixes
+- (**biome**) fmt everything - ([3fba84a](https://github.com/Mozart409/blocky-frontend/commit/3fba84ab36a9a20ff375e4d4225ef4c08d9b5969)) - [@Mozart409](https://github.com/Mozart409)
+- (**biome**) migrate biome config - ([0f77497](https://github.com/Mozart409/blocky-frontend/commit/0f77497757de4a030b0f2ecaaa79523ab726a179)) - [@Mozart409](https://github.com/Mozart409)
+- (**compose**) bump dev blocky to v0.36.0 - ([0ab75af](https://github.com/Mozart409/blocky-frontend/commit/0ab75aff6df8ba9ada99cdafccd79ab4579886e3)) - [@Mozart409](https://github.com/Mozart409)
+- (**deps**) upgrade pnpm deps - ([740b4c8](https://github.com/Mozart409/blocky-frontend/commit/740b4c8054da44e8d9c44acfc818678777dac602)) - [@Mozart409](https://github.com/Mozart409)
+- (**readme**) add 1.4.0 for current blocky - ([6a07d25](https://github.com/Mozart409/blocky-frontend/commit/6a07d2576cee28c99e2e03b5aa0e07093b8d62d4)) - [@Mozart409](https://github.com/Mozart409)
+#### Documentation
+- (**readme**) update compat table - ([3967c48](https://github.com/Mozart409/blocky-frontend/commit/3967c4874189ed7533942af10953a44a1538684a)) - [@Mozart409](https://github.com/Mozart409)
+
+- - -
+
 ## [v1.4.0](https://github.com/Mozart409/blocky-frontend/compare/2f0169a206f0578aba867ea16d57860e9e04b758..v1.4.0) - 2026-10-12
 #### Features
 - (**stats**) show filtered queries in dashboard - ([8ef4ae7](https://github.com/Mozart409/blocky-frontend/commit/8ef4ae7752bbfaa02a52382153bb82629e66eaea)) - [@Mozart409](https://github.com/Mozart409)

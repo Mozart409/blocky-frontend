@@ -2,7 +2,7 @@
   "name": "blocky-frontend",
   "private": false,
   "type": "module",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "scripts": {
     "api:generate": "orval",
     "dev": "vite --host",
