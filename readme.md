@@ -8,7 +8,7 @@ Blocky version each frontend release was built and tested against.
 
 | blocky-frontend   | blocky              | Notes                                                             |
 | ----------------- | ------------------- | ----------------------------------------------------------------- |
-| `v1.4.0`          | `v0.34.0`–`v0.35.0` | API client regenerated; stats `summary`/`perHour` gain `filtered` |
+| `v1.4.0`–`v1.4.1` | `v0.34.0`–`v0.36.0` | API client regenerated; stats `summary`/`perHour` gain `filtered` |
 | `v1.3.0`          | `v0.33.0`           | Stats dashboard (needs `/api/stats`, blocky ≥ `v0.32.0`)          |
 | `v1.0.0`–`v1.2.2` | `v0.28.2`           |                                                                   |
 | `v0.2.0`–`v0.2.2` | `v0.23`             |                                                                   |
